@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      <Nav />
     <section className="xl:padding-l wide:padding-r padding:b"> 
       <Hero />
     </section>
