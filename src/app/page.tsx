@@ -8,20 +8,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
-    <section className="xl:padding-l wide:padding-r padding:b"> 
-      <Hero />
-    </section>
-    <section className="xl:padding-l wide:padding-r padding:b"> 
-      <About />
-    </section>
-    <section className="xl:padding-l wide:padding-r padding:b"> 
-      <Contact />
-    </section>
-    <section className="xl:padding-l wide:padding-r padding:b">
-      <Footer />
-    </section>
-
+  <main>
+    Home
   </main>
   );
 }
