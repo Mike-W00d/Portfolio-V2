@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-  <main>
-    Home
-  </main>
+    <div> 
+      Hello World
+    </div>
   );
 }
