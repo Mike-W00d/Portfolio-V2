@@ -1,4 +1,3 @@
-import Nav from "../components/nav";
 import { Metadata } from "next";
 import { Hero, About, Contact, Footer } from "./_sections";
 
