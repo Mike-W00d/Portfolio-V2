@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 
-import { Bell, Briefcase, Home, Settings, User } from 'lucide-react';
+import { Bell, Images, Home, Presentation, Settings, User, MessageSquareMore, Contact } from 'lucide-react';
 
 export const NavItems = () => {
   const pathname = usePathname();
@@ -20,21 +20,28 @@ export const NavItems = () => {
     {
       name: 'Projects',
       href: '/projects',
-      icon: <User size={20} />,
+      icon: <Presentation size={20} />,
       active: isNavItemActive(pathname, '/projects'),
       position: 'top',
     },
     {
       name: 'Blog',
       href: '/blog',
-      icon: <Bell size={20} />,
+      icon: <MessageSquareMore size={20} />,
       active: isNavItemActive(pathname, '/blog'),
+      position: 'top',
+    },
+    {
+      name: 'Gallery',
+      href: '/gallery',
+      icon: <Images size={20} />,
+      active: isNavItemActive(pathname, '/gallery'),
       position: 'top',
     },
     {
       name: 'Contact',
       href: '/contact',
-      icon: <Briefcase size={20} />,
+      icon: <Contact size={20} />,
       active: isNavItemActive(pathname, '/contact'),
       position: 'top',
     },
