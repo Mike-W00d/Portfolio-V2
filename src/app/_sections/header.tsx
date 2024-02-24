@@ -25,16 +25,16 @@ export default function Header() {
   return (
     <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6 justify-between">
       <Link
-        href="#"
-        className="flex items-center gap-2 text-lg font-semibold md:text-base"
+        href="/"
+        className="flex items-center gap-2 text-xl font-semibold md:text-base"
         prefetch={false}
       >
-        <span className="w-8 h-8 border bg-accent rounded-full" />
-        <span>Acme Inc</span>
+        {/* <span className="w-8 h-8 border bg-accent rounded-full" /> */}
+        <span className='text-2xl'>Michael Wood</span>
       </Link>
 
       <div className="ml-4 flex items-center gap-3">
-        <DropdownMenu>
+        {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
@@ -58,7 +58,7 @@ export default function Header() {
             <DropdownMenuSeparator />
             <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
 
         <button onClick={() => setIsOpen(true)} className="block sm:hidden">
           <Menu size={24} />
