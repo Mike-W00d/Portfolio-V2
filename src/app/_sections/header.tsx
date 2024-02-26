@@ -23,14 +23,14 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6 justify-between">
+    <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6 justify-between bg-fedblue border-fedblue">
       <Link
         href="/"
         className="flex items-center gap-2 text-xl font-semibold md:text-base"
         prefetch={false}
       >
         {/* <span className="w-8 h-8 border bg-accent rounded-full" /> */}
-        <span className='text-2xl'>Michael Wood</span>
+        <span className='text-2xl text-white'>Michael Wood</span>
       </Link>
 
       <div className="ml-4 flex items-center gap-3">
@@ -60,7 +60,7 @@ export default function Header() {
           </DropdownMenuContent>
         </DropdownMenu> */}
 
-        <button onClick={() => setIsOpen(true)} className="block sm:hidden">
+        <button onClick={() => setIsOpen(true)} className="block sm:hidden bg-white rounded-sm hover:lb">
           <Menu size={24} />
         </button>
 
