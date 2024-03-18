@@ -14,7 +14,9 @@ export default function Home() {
     <section>
       <About />
     </section>
-
+    <section>
+      <Contact />
+    </section>
     </div>
   );
 }
