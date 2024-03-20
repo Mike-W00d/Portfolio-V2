@@ -1,9 +1,7 @@
 'use client';
 
 import { Fragment, useEffect, useState } from 'react';
-
 import Link from 'next/link';
-
 import {
   Tooltip,
   TooltipContent,
@@ -19,29 +17,39 @@ import { ThemeToggle } from './theme-toggle';
 export default function SideNav() {
   const navItems = NavItems();
 
-  const [isSidebarExpanded, setIsSidebarExpanded] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = window.localStorage.getItem('sidebarExpanded');
-      if (saved === null) {
-        return true;
-      }
-      return JSON.parse(saved);
-    }
-    return true; // default state if window is not defined
-  });
+  // Set initial state without relying on window/localStorage
+  const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Delay logic until the component is mounted
+    setIsMounted(true);
+
     if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('sidebarExpanded');
+      if (saved !== null) {
+        setIsSidebarExpanded(JSON.parse(saved));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isMounted && typeof window !== 'undefined') {
       window.localStorage.setItem(
         'sidebarExpanded',
         JSON.stringify(isSidebarExpanded),
       );
     }
-  }, [isSidebarExpanded]);
+  }, [isSidebarExpanded, isMounted]);
 
   const toggleSidebar = () => {
     setIsSidebarExpanded(!isSidebarExpanded);
   };
+
+  // If the component is not mounted, avoid rendering dynamic content
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="pr-4">
@@ -76,7 +84,6 @@ export default function SideNav() {
           </div>
           {/* Bottom */}
           <div className="sticky bottom-0 mt-auto whitespace-nowrap mb-4 transition duration-200 block">
-            {/* <ThemeToggle isDropDown={true} /> */}
             {navItems.map((item, idx) => {
               if (item.position === 'bottom') {
                 return (

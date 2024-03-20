@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./_sections/header";
 import SideNav from "@/components/side-nav";
+import { cn } from "@/lib/utils";
 
 import Head from "next/head";
 
@@ -23,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-white ${inter.className}`}>
+      <body className={cn("bg-background", inter.className)}>
       <Header />
           <div className="flex">
             <SideNav />
