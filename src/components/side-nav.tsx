@@ -52,7 +52,7 @@ export default function SideNav() {
   }
 
   return (
-    <div className="pr-4">
+    <div className='pr-4 bg-transparent'>
       <div
         className={cn(
           isSidebarExpanded ? 'w-[200px]' : 'w-[68px]',
@@ -106,7 +106,7 @@ export default function SideNav() {
         <div className="mt-[calc(calc(60vh)-10px)] relative">
           <button
             type="button"
-            className="absolute top right-[-12px] flex h-6 w-6 items-center justify-center border border-muted-foreground/20 rounded-full bg-accent shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
+            className="absolute top right-[-12px] flex h-6 w-6 items-center justify-center border border-muted-foreground/20 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
             onClick={toggleSidebar}
           >
             {isSidebarExpanded ? (

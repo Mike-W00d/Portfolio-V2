@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "./_sections/header";
 import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
-
+import Image from "next/image";
 import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,6 +27,15 @@ export default function RootLayout({
       <body className={cn("bg-background", inter.className)}>
       <Header />
           <div className="flex">
+          <div className="absolute inset-0 -z-10">
+        <Image 
+          src="/background.jpg"
+          alt="grey background"
+          layout="fill" 
+          objectFit="cover"
+          className="z-negative"
+        />
+      </div>
             <SideNav />
             <div className="w-full overflow-x-auto">
               <div className="sm:h-[calc(99vh-60px)] overflow-auto ">
