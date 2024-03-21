@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { Monitor, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-import { Button } from './ui/button';
+import { Button } from './ui/Navbutton';
 import {
   DropdownMenu,
   DropdownMenuContent,

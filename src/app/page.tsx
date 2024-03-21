@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div>
-      <section className="relative xl:padding-l wide:padding-r padding:b z-10 cover"> 
+      <section className="relative"> 
         <Hero />
       </section>
       <section className="relative z-10">
