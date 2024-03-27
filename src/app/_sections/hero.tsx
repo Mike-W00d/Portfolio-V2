@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <div className="w-full min-h-screen flex flex-col lg:flex-row justify-center items-center gap-10 px-4 lg:px-0">
       {/* Left Section: Text box, GitHub, and Button */}
-      <div className="lg:w-1/2 w-full flex flex-col items-center lg:items-start">
+      <div className="lg:w-1/2 w-full flex flex-col items-center lg:items-start pt-4 lg:pt-10">
         {/* Text box */}
         <div className="text-center lg:text-left bg-white shadow-xl rounded-lg p-6 w-full lg:w-auto">
           <span className="font-bold">
@@ -24,10 +24,10 @@ const Hero = () => {
           </span>
         </div>
 
-        {/* Button and GitHub image */}
+        {/* Button and GitHub image in a row on all screen sizes */}
         <div className="flex flex-row items-center justify-center gap-4 mt-4">
           <Button
-            className="bg-fedblue hover:bg-honblue shadow-md"
+            className="bg-fedblue hover:bg-honblue"
             onClick={() =>
               window.open("/CV.pdf", "_blank", "noopener noreferrer")
             }
@@ -37,7 +37,15 @@ const Hero = () => {
           <a href="https://github.com/Mike-W00d">
             <Image
               src="/github.png"
-              alt="Github logo"
+              alt="Github logo and Link to my GitHub"
+              width={40}
+              height={40}
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/mike-wood22/">
+            <Image
+              src="/linkedin.png"
+              alt="LinkedIn logo and Link to my LinkedIn"
               width={40}
               height={40}
             />
@@ -51,7 +59,7 @@ const Hero = () => {
           src="/hero.png"
           alt="Hero"
           width={450}
-          height={650}
+          height={550}
           className="rounded-full"
         />
       </div>
