@@ -8,7 +8,7 @@ import NewTabLink from "@/components/newTabLink";
 const Hero = () => {
   return (
     <div className="w-full min-h-screen flex flex-col lg:flex-row justify-center items-center gap-10 px-4 lg:px-0">
-      {/* Left Section: Text box, GitHub, and Button */}
+      {/* Left Section */}
       <div className="lg:w-1/2 w-full flex flex-col items-center lg:items-start pt-4 lg:pt-10">
         {/* Text box */}
         <div className="text-center lg:text-left bg-white shadow-xl rounded-lg p-6 w-full lg:w-auto">
@@ -24,7 +24,7 @@ const Hero = () => {
           </span>
         </div>
 
-        {/* Button and GitHub image in a row on all screen sizes */}
+        {/* CV, GitHub and Linkedin  */}
         <div className="flex flex-row items-center justify-center gap-4 mt-4">
           <Button
             className="bg-fedblue hover:bg-honblue"
@@ -53,13 +53,13 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Right Section: Hero Image */}
+      {/* Right Section */}
       <div className="lg:w-1/2 w-full text-center relative flex justify-center items-center">
         <Image
           src="/hero.png"
           alt="Hero"
-          width={450}
-          height={550}
+          width={550}
+          height={650}
           className="rounded-full"
         />
       </div>
