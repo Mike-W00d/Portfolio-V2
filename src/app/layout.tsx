@@ -31,9 +31,8 @@ export default function RootLayout({
         <Image 
           src="/background.jpg"
           alt="grey background"
-          layout="fill" 
-          objectFit="cover"
           className="z-negative"
+          fill 
         />
       </div>
             <SideNav />
