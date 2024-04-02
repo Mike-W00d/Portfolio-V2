@@ -12,10 +12,10 @@ export default function Home() {
       <section className="relative"> 
         <Hero />
       </section>
-      <section className="relative z-10">
+      <section className="relative">
         <About />
       </section>
-      <section className="relative z-10">
+      <section className="relative">
         <Contact />
       </section>
     </div>
