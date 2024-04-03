@@ -25,9 +25,9 @@ const Hero = () => {
         </div>
 
         {/* CV, GitHub and Linkedin  */}
-        <div className="flex flex-row items-center justify-center gap-4 mt-4">
+        <div className="flex flex-row items-center justify-center gap-4 mt-4 px-2">
           <Button
-            className="bg-fedblue hover:bg-honblue"
+            className="bg-fedblue hover:bg-honblue hover:scale-105"
             onClick={() =>
               window.open("/CV.pdf", "_blank", "noopener noreferrer")
             }
@@ -40,6 +40,7 @@ const Hero = () => {
               alt="Github logo and Link to my GitHub"
               width={40}
               height={40}
+              className="hover:cursor-pointer hover:scale-110"
             />
           </a>
           <a href="https://www.linkedin.com/in/mike-wood22/">
@@ -48,6 +49,7 @@ const Hero = () => {
               alt="LinkedIn logo and Link to my LinkedIn"
               width={40}
               height={40}
+              className="hover:cursor-pointer hover:scale-110"
             />
           </a>
         </div>
