@@ -1,7 +1,8 @@
 const Footer = () => {
+  
   return (
-    <div>
-      Footer
+    <div className="position:fixed bottom-0 bg-honblue">
+      Test
     </div>
   )
 }

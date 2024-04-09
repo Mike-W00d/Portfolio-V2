@@ -6,6 +6,7 @@ import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Head from "next/head";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,21 +26,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("bg-background", inter.className)}>
+      <body className={cn(inter.className)}>
         <Header />
         <div className="flex">
           <div className="absolute inset-0 -z-10">
             <Image
               src="/background.jpg"
               alt="grey background"
-              className="z-negative"
               fill={true}
             />
           </div>
           <SideNav />
           <div className="w-full overflow-x-auto">
-            <div className="h-[calc(99vh-60px)] overflow-auto ">
-              <div className="w-full flex justify-center mx-auto   overflow-auto h-[calc(100vh - 120px)] overflow-y-auto relative">
+            <div className="h-[calc(100vh-64px)] overflow-auto ">
+              <div className="w-full flex justify-center mx-auto h-[calc(100vh - 120px)] overflow-y-auto relative">
                 <div className="w-full md:max-w-6xl">{children}</div>
               </div>
             </div>
