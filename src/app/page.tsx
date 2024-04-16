@@ -18,6 +18,9 @@ export default function Home() {
       <section className="relative">
         <Contact />
       </section>
+      <section className="relative">
+        <Footer />
+      </section>
     </div>
   );
 }

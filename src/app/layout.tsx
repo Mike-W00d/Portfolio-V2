@@ -6,7 +6,7 @@ import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Head from "next/head";
-import Footer from "@/components/footer";
+import Footer from "@/app/_sections/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
