@@ -1,5 +1,6 @@
 import React from 'react'
 import { Metadata } from "next";
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Projects | Michael Wood | Full Stack Developer',
@@ -15,6 +16,14 @@ const Projects = () => {
           <span className='text-fedblue text-xl font-bold'> Bald Bible </span>
           <span> Primary Language - Javascript </span>
           <span> Tech Stack - Node, React, MongoDB, Express. Testing - Cypress, Jest</span>
+          <Image 
+            src='/BaldBibleHome.jpg'
+            alt='Screenshot of Bald Bible Home Page'
+            width={500}
+            height={300}
+            />
+            <a href='https://github.com/Mike-W00d/Bald-Bible'>Link to the Github Repo</a>
+            
         </div>
     </div>
   )
