@@ -48,7 +48,7 @@ export default function SideNav() {
 
   // If the component is not mounted, avoid rendering dynamic content
   if (!isMounted) {
-    return null;
+    return <div className='w-[74px] bg-fedblue'></div>;
   }
 
   return (

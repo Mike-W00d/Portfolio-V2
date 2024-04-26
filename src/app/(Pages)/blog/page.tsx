@@ -1,11 +1,9 @@
-import React from 'react'
+import CarouselDemo from "@/components/CarouselDemo"
 
-const blog = () => {
+export default function Page() {
   return (
-    <div>
-      Blog coming soon 
+    <div className="flex justify-center w-full">
+      <CarouselDemo />
     </div>
   )
 }
-
-export default blog
