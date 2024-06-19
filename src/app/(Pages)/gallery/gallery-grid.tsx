@@ -16,6 +16,7 @@ export default function GalleryGrid({ images }: { images: SearchResults[] }) {
             width={imageData.width}
             height={imageData.height}
             alt="Image captured my myself"
+            className="rounded-sm shadow-md hover:scale-105"
           />
         );
       }}
