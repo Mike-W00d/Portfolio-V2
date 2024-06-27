@@ -1,5 +1,7 @@
-'use client';
+"use client";
 
+import React from "react";
+import { ReactTyped } from "react-typed";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -13,12 +15,27 @@ const Hero = () => {
         {/* Text box */}
         <div className="text-center lg:text-left bg-white shadow-xl rounded-lg p-6 w-full lg:w-auto">
           <span className="font-bold">
-            <h1 className="text-xl text-honblue px-3"> Hello, I'm</h1>
-            <h2 className="text-4xl font-extrabold text-fedblue px-3">
-              Michael Wood
-            </h2>
+            {/* <h1 className="text-xl text-honblue px-3"> Hello, I'm</h1> */}
+            {/* <h2 className="text-4xl font-extrabold text-fedblue px-3">
+              Michael Wood</h2> */}
+            <ReactTyped
+              className="text-xl text-honblue px-3"
+              strings={["Hello, I'm"]}
+              typeSpeed={90}
+              showCursor={false}
+            />
+            <br />
+            <ReactTyped
+              className="text-4xl font-extrabold text-fedblue px-3"
+              strings={["Michael Wood"]}
+              typeSpeed={90}
+              showCursor={false}
+              smartBackspace={true}
+              startDelay={1500}
+            />
+
             <h3 className="text-xl text-honblue px-3">
-              I am a Full Stack Developer specializing in Node, Tailwind CSS,
+              I am a Full Stack Developer specializing in Node.js, Tailwind CSS,
               TypeScript, Next.js and MongoDB.
             </h3>
           </span>
@@ -58,7 +75,7 @@ const Hero = () => {
       {/* Right Section */}
       <div className="lg:w-1/2 w-full text-center relative flex justify-center items-center">
         <Image
-          src="/hero.png"
+          src="/hero2.png"
           alt="Hero"
           width={550}
           height={650}
