@@ -1,6 +1,7 @@
 import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
+
 const BaldBibleCarosel = () => {
   return (
     <div>
@@ -31,7 +32,7 @@ const BaldBibleCarosel = () => {
         <div className="flex justify-center align-middle space-x-4 items-center m-5">
           <a
             href="https://github.com/Mike-W00d/Bald-Bible"
-            className="text-blue-500 mt-4"
+            className="text-blue-500"
           >
             <Image
               src="/github.png"
