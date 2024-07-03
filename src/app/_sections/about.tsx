@@ -4,7 +4,7 @@ const About = () => {
       <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-4xl">
         <h1 className="text-4xl font-bold text-fedblue text-center mb-6">About Me</h1>
         <a href='/about'>
-        <h2> Don't like Reading Click to see About Me Video </h2>
+        <h2 className="font-style: italic text-fedblue hover:text-honblue text-center"> Don't like Reading Click to see About Me Video </h2>
         </a>
         <section className="mb-8">
           <p className="text-lg mt-4">

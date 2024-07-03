@@ -12,7 +12,7 @@ export default function Home() {
       <section className="relative"> 
         <Hero />
       </section>
-      <section className="relative">
+      <section id="about" className="relative">
         <About />
       </section>
       <section className="relative">

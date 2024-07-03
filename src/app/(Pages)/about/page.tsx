@@ -15,7 +15,7 @@ const About = () => {
         src="https://res.cloudinary.com/dpfptjeqd/video/upload/v1729520633/About_Video_wescry.mov"
       />
       <p className="mt-4 text-fedblue text-center">Any further questions please contact me</p>
-      <a href="/">
+      <a href="/#about">
         <Button className="bg-fedblue hover:bg-honblue mt-4">
           Return to Home
         </Button>
