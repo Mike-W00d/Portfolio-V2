@@ -46,7 +46,7 @@ const About = () => {
           <h2 className="text-xl text-honblue font-semibold">Interests & Hobbies</h2>
           <p className="text-lg mt-4">
             Outside of coding, I am passionate about staying active. I'm a <strong>scratch golfer</strong> and enjoy running, going to the gym, and skiing.
-            Recently, I've taken up tennis as well! Feel free to check out my <a href="/gallery" className="text-fedblue font-semibold">gallery</a> to see some moments I’ve captured over the years.
+            Recently, I've taken up tennis. Feel free to check out my <a href="/gallery" className="text-fedblue font-semibold">gallery</a> to see some moments I’ve captured over the years.
           </p>
         </section>
       </div>
