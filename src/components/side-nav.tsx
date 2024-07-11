@@ -12,8 +12,6 @@ import { NavItems } from '@/config';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { ThemeToggle } from './theme-toggle';
-
 export default function SideNav() {
   const navItems = NavItems();
 
