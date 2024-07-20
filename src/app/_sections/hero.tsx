@@ -75,7 +75,7 @@ const Hero = () => {
       {/* Right Section */}
       <div className="lg:w-1/2 w-full text-center relative flex justify-center items-center">
         <Image
-          src="/hero2.png"
+          src="/HERO2.png"
           alt="Hero"
           width={550}
           height={650}
