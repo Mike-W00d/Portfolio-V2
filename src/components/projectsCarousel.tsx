@@ -6,12 +6,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import BaldBibleCarosel from "@/app/(Pages)/projects/bald-bible/carosel";
-import AcebookCarosel from "@/app/(Pages)/projects/acebook/carosel";
-import Image from "next/image";
-import { Button } from "./ui/button";
-import PortfolioCarosel from "@/app/(Pages)/projects/portfolio/carosel";
-import NikeCarosel from "@/app/(Pages)/projects/nike-clone/carosel";
+import BaldBibleCarosel from "@/app/_sections/baldCarosel";
+import AcebookCarosel from "@/app/_sections/acebookCarosel";
+import PortfolioCarosel from "@/app/_sections/portfolioCarosel";
+import NikeCarosel from "@/app/_sections/nikeCarosel";
 
 export function ProjectsCarousel() {
   return (
