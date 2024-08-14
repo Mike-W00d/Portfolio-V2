@@ -1,14 +1,19 @@
 import React from 'react'
 import cloudinary from 'cloudinary'
-import { CloudinaryImage } from '@/components/cloudinaryIMG'
 import GalleryGrid from './gallery-grid'
 
- export type SearchResults = {
+export type SearchResults = {
   public_id: string;
   secure_url: string;
   width: number;
   height: number;
 }
+
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Gallery',
+};
 
 export default async function Gallery () {
   const results = await cloudinary.v2.search
@@ -18,10 +23,8 @@ export default async function Gallery () {
   .execute() as {resources: SearchResults[]}
 
   return (
-    <section>
-      <div className='flex flex-col gap-8'>
+    <section className='flex flex-col gap-8'>
       <GalleryGrid images={results.resources} />
-      </div>
     </section>
   )
 }

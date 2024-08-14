@@ -5,8 +5,6 @@ import Header from "./_sections/header";
 import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Head from "next/head";
-import Footer from "@/app/_sections/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +15,7 @@ export const metadata: Metadata = {
   },
   description:
     "Michael Wood is a Full Stack Developer based in the United Kingdom. He specialises in Next.js, React, TypeScript, and Tailwind CSS.",
+  metadataBase: new URL("https://mgmwood.com"),
 };
 
 export default function RootLayout({

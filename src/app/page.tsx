@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { Hero, About, Contact, Footer } from "./_sections";
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Homepage | Michael Wood | Full Stack Developer',
