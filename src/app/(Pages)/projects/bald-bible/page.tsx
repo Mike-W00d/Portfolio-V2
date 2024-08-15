@@ -209,9 +209,9 @@ const Baldbible = () => {
             few issues with merge conflicts. We had a clear system in place to
             try and mitigate the risk of this happening which was - all working
             on our own individual separate branches away from the main, regular
-            commits and needing 1 other members' approval before merging into
+            commits and needing 1 other members approval before merging into
             main on GitHub. We did however run into some issues with
-            package.lock.json but all were sorted by using VS Code's merge
+            package.lock.json but all were sorted by using VS Codes merge
             editor. I have since learned more about rebasing which would have
             been helpful when working on this project.
           </span>
@@ -226,7 +226,8 @@ const Baldbible = () => {
             highlights the importance of communicating when you add values into
             .ENV / config.
           </span>
-          <div className="flex space-x-4 items-center">
+          {/* Links */}
+          <div className="flex space-x-4 items-center pt-3">
             <a href="/projects">
               <Button className="bg-fedblue hover:bg-honblue">
                 See More Projects
