@@ -5,6 +5,7 @@ import Header from "./_sections/header";
 import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import GoogleCaptchaWrapper from "./GoogleCaptchaWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className)}>
+        <GoogleCaptchaWrapper>
         <Header />
         <div className="flex">
           <div className="absolute inset-0 -z-10">
@@ -40,11 +42,14 @@ export default function RootLayout({
           <div className="w-full overflow-x-hidden">
             <div className="h-[calc(100vh-64px)] overflow-auto">
               <div className="w-full flex justify-center mx-auto h-[calc(100vh - 120px)] overflow-y-auto relative">
-                <div className="w-full md:max-w-6xl">{children}</div>
+                <div className="w-full md:max-w-6xl">
+                  {children}
+                </div>
               </div>
             </div>
           </div>
         </div>
+        </GoogleCaptchaWrapper>
       </body>
     </html>
   );
