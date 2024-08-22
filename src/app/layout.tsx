@@ -5,7 +5,8 @@ import Header from "./_sections/header";
 import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import GoogleCaptchaWrapper from "./GoogleCaptchaWrapper";
+import GoogleCaptchaWrapper from "./providers/GoogleCaptchaWrapper";
+import Providers from "./providers/Toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,7 +44,9 @@ export default function RootLayout({
             <div className="h-[calc(100vh-64px)] overflow-auto">
               <div className="w-full flex justify-center mx-auto h-[calc(100vh - 120px)] overflow-y-auto relative">
                 <div className="w-full md:max-w-6xl">
+                  <Providers>
                   {children}
+                  </Providers>
                 </div>
               </div>
             </div>

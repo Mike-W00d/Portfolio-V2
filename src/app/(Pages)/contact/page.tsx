@@ -1,5 +1,5 @@
 "use client";
-import GoogleCaptchaWrapper from "@/app/GoogleCaptchaWrapper";
+
 import axios from "axios";
 import { FormEvent, useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -17,8 +17,6 @@ export default function Contact() {
     }
 
     const gRecaptchaToken = await executeRecaptcha("submit_form");
-
-    ///
 
     const response = await axios({
       method: "post",
@@ -47,7 +45,7 @@ export default function Contact() {
       <br />
       <form
         className="flex flex-col justify-start items-center gap-4"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit  }
       >
         <input
           type="text"
