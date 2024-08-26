@@ -3,14 +3,19 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
-import { ContactFormSchema } from "@/lib/schema";
-import { sendEmail } from "@/app/api/_actions";
+import { ContactFormSchema } from "@/lib/schema"; // Assuming the schema is defined elsewhere
+import { sendEmail } from "@/app/api/_actions"; // Assuming email sending function
 import { toast } from "sonner";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useState, FormEvent } from "react";
+import axios from "axios";
 
 export type ContactFormInputs = z.infer<typeof ContactFormSchema>;
 
 export default function ContactForm() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [submitMessage, setSubmitMessage] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -21,18 +26,43 @@ export default function ContactForm() {
   });
 
   const processForm: SubmitHandler<ContactFormInputs> = async (data) => {
-    const result = await sendEmail(data);
-
-    if (result?.success) {
-      console.log({ data: result.data });
-      toast.success("Email sent!");
-      reset();
+    // ReCaptcha verification
+    if (!executeRecaptcha) {
+      console.log("ReCaptcha not available");
       return;
     }
 
-    // toast error
-    console.log(result?.error);
-    toast.error("Something went wrong!");
+    const gRecaptchaToken = await executeRecaptcha("submit_form");
+
+    const recaptchaResponse = await axios({
+      method: "post",
+      url: "/api/reCaptchaSubmit",
+      data: {
+        gRecaptchaToken,
+      },
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (recaptchaResponse?.data?.success && recaptchaResponse?.data?.score > 0.5) {
+      // ReCaptcha passed; proceed to send the email
+      const result = await sendEmail(data);
+
+      if (result?.success) {
+        console.log({ data: result.data });
+        toast.success("ReCaptcha Verified and Email sent!");
+        reset();
+        setSubmitMessage("Thank you for your Message!");
+      } else {
+        console.log(result?.error);
+        toast.error("Something went wrong!");
+      }
+    } else {
+      console.log(`ReCaptcha failed with score: ${recaptchaResponse?.data?.score}`);
+      setSubmitMessage("Failed to verify ReCaptcha! You must be a robot!");
+    }
   };
 
   return (
@@ -42,8 +72,8 @@ export default function ContactForm() {
     >
       <div>
         <input
-          placeholder="name"
-          className="w-full rounded-lg"
+          placeholder="Name"
+          className="w-full rounded-lg border p-4"
           {...register("name")}
         />
         {errors.name?.message && (
@@ -55,8 +85,8 @@ export default function ContactForm() {
 
       <div>
         <input
-          placeholder="email"
-          className="w-full rounded-lg"
+          placeholder="Email"
+          className="w-full rounded-lg border p-4"
           {...register("email")}
         />
         {errors.email?.message && (
@@ -67,9 +97,9 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <input 
-          placeholder="company"
-          className="w-full rounded-lg"
+        <input
+          placeholder="Company"
+          className="w-full rounded-lg border p-4"
           {...register("company")}
         />
         {errors.company?.message && (
@@ -82,22 +112,24 @@ export default function ContactForm() {
       <div>
         <textarea
           rows={5}
-          cols={5}
-          placeholder="message"
-          className="w-full rounded-lg"
+          placeholder="Message"
+          className="w-full rounded-lg border p-4"
           {...register("message")}
         />
         {errors.message?.message && (
-          <p className="ml-1 text-sm text-red-400">{errors.message.message}</p>
+          <p className="ml-1 text-sm text-red-400">
+            {errors.message.message}
+          </p>
         )}
       </div>
 
       <button
         disabled={isSubmitting}
-        className="rounded-lg border border-black bg-black py-2.5 font-medium text-white transition-colors hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-50"
+        className="rounded-lg border border-fedblue bg-fedblue py-2.5 font-medium text-white transition-colors hover:bg-honblue disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
+      {submitMessage && <p className="text-lg text-center">{submitMessage}</p>}
     </form>
   );
 }

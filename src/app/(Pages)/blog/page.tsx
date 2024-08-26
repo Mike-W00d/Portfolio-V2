@@ -1,4 +1,3 @@
-import ContactForm from "@/components/contact-form"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -8,7 +7,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <ContactForm />
+      Blog Coming Soon
     </div>
   )
 }

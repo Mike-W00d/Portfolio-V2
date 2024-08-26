@@ -5,7 +5,7 @@ const Contact = () => {
     <div className="flex mt-10 w-full justify-center gap-10 px-4 ">
       <div className="flex flex-col justify-center bg-white shadow-xl rounded-full p-8 w-full max-w-xl">
         <h1 className="text-xl font-bold text-fedblue text-center mb-4">
-          Get in Touch
+          Quick Links
         </h1>
         <div className="w-full flex justify-between items-center">
           <a href="mailto:mgwood22@sky.com">
