@@ -3,7 +3,6 @@
 import { z } from "zod";
 import { Resend } from "resend";
 import { ContactFormSchema } from "@/lib/schema";
-import Contact from "../(Pages)/contact/page";
 import ContactFormEmail from "@/components/emailTemplate";
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>;
@@ -18,7 +17,7 @@ export async function sendEmail(data: ContactFormInputs) {
     try {
       const data = await resend.emails.send({
         from: "mgmwood.com <mike@mgmwood.com>",
-        to: ["mike@mgmwood.com"],
+        to: ["mike@mgmwood.com", `${name} <${email}>`],
         subject: "Contact Form Submission",
         text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nMessage: ${message}`,
         react: ContactFormEmail({ name, email, company, message }),

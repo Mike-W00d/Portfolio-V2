@@ -3,8 +3,8 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { ContactFormSchema } from "@/lib/schema"; // Assuming the schema is defined elsewhere
-import { sendEmail } from "@/app/api/_actions"; // Assuming email sending function
+import { ContactFormSchema } from "@/lib/schema";
+import { sendEmail } from "@/app/api/_actions";
 import { toast } from "sonner";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useState, FormEvent } from "react";

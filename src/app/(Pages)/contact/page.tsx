@@ -4,7 +4,7 @@ import { Section } from "lucide-react";
 
 const page = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full w-max-4xl">
+    <div className="flex flex-col items-center justify-center w-full w-max-4xl mt-4">
         <h1 className="text-4xl text-fedblue font-bold justify-center mb-4">
           {" "}
           Get in Touch{" "}

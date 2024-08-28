@@ -19,7 +19,7 @@ export default async function Gallery () {
   const results = await cloudinary.v2.search
   .expression('mgmwood.com')
   .sort_by('public_id','desc')
-  .max_results(30)
+  .max_results(100)
   .execute() as {resources: SearchResults[]}
 
   return (

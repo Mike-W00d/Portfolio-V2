@@ -18,8 +18,9 @@ export const ContactFormEmail: React.FC<Readonly<EmailTemplateProps>> = ({
     <p> 
       From <strong>{name}</strong> at <strong>{company}</strong> Email <strong>{email}</strong>
   </p>  
-  <h2>Message</h2>
+  <h2>Your Message</h2>
   <p>{message}</p>
+  <h2>Thank you for getting in touch</h2>
   </div>
 );
 
