@@ -1,6 +1,11 @@
 import ContactForm from "@/components/contact-form";
 import { Contact } from "@/app/_sections";
 import { Section } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact | Michael Wood | Full Stack Developer",
+};
 
 const page = () => {
   return (

@@ -5,6 +5,7 @@ import { SearchResults } from "./page";
 import { CloudinaryImage } from "@/components/cloudinaryIMG";
 
 
+
 export default function GalleryGrid({ images }: { images: SearchResults[] }) {
   return (
     <ImageGrid

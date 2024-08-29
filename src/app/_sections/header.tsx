@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
 import { NavItems } from '@/config';
 import { Menu } from 'lucide-react';
 
@@ -34,31 +34,6 @@ export default function Header() {
       </Link>
 
       <div className="ml-4 flex items-center gap-3">
-        {/* <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              className="overflow-hidden rounded-full"
-            >
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Logout</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu> */}
 
         <button onClick={() => setIsOpen(true)} className="block sm:hidden bg-white rounded-sm hover:lb">
           <Menu size={24} />
@@ -66,6 +41,7 @@ export default function Header() {
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetContent side="right" className='block md:hidden'>
+            <SheetTitle>Menu</SheetTitle>
             <div className="pt-4  overflow-y-auto h-fit w-full flex flex-col gap-1">
               {navItems.map((navItem, idx) => (
                 <Link

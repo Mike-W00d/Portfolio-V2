@@ -78,7 +78,7 @@ const Hero = () => {
           src="/HERO2.png"
           alt="Hero"
           width={550}
-          height={650}
+          height={550}
           className="rounded-full"
         />
       </div>

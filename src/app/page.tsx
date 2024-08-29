@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Homepage | Michael Wood | Full Stack Developer',
 };
 
+
 export default function Home() {
   return (
     <div>
