@@ -1,7 +1,20 @@
-import { z } from 'zod';
+import mongoose, { Document, Schema } from 'mongoose';
+export interface IPhoto extends Document {
+  imageURL: string;
+  description: string;
+}
 
-export const photoSchema = z.object({
-  url: z.string(),
-  title: z.string(),
-  description: z.string(),
+const photoSchema = new Schema({
+  imageURL: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
 });
+
+const Photo = mongoose.model<IPhoto>('Photo', photoSchema);
+
+export default Photo;
