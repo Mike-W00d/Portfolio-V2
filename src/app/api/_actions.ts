@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { Resend } from "resend";
-import { ContactFormSchema } from "@/lib/contactSchema";
+import { ContactFormSchema } from "@/lib/models/contactSchema";
 import ContactFormEmail from "@/components/emailTemplate";
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>;
