@@ -16,6 +16,6 @@ const photoSchema = new Schema({
   },
 });
 
-const Photo = mongoose.model<IPhoto>('Photo', photoSchema);
+const Photo = mongoose.models.Photo || mongoose.model<IPhoto>('Photo', photoSchema);
 
 export default Photo;
