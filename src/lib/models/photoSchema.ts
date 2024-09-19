@@ -1,18 +1,26 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IPhoto extends Document {
-  imageURL: string;
+  src: string;
   description: string;
+  height: number;
+  width: number;
 }
 
 const photoSchema = new Schema({
-  imageURL: {
+  src: {
     type: String,
     required: true,
   },
   description: {
     type: String,
     required: true,
+  },
+  height: {
+    type: Number,
+  },
+  width: {
+    type: Number,
   },
 });
 
