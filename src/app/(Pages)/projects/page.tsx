@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const Projects = () => {
   return (
     <div className='w-full flex flex-col items-center overflow-x-hidden'>
-      <h1 className='font-bold text-4xl text-fedblue text-center mb-10'>
+      <h1 className='font-bold text-4xl text-fedblue text-center mb-10 mt-4'>
         Projects
       </h1>
       <ProjectsCarousel />

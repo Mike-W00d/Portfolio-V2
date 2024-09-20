@@ -6,21 +6,16 @@ const BaldBibleCarosel = () => {
   return (
     <div>
       <div className="flex bg-white w-full rounded-lg shadow-xl flex-col p-6">
-        <span className="text-fedblue text-4xl font-bold">Bald Bible</span>{" "}
-        {/* Increased text size */}
-        <span className="text-honblue text-2xl font-bold">
-          Primary Language - JavaScript
-        </span>{" "}
-        {/* Adjusted text size */}
+        <span className="text-fedblue text-4xl font-bold my-1">Bald Bible</span>{" "}
         <span className="text-honblue text-lg">
-          <span className="font-semibold"> Tech Stack - </span> Node.js, React,
+          <span className="font-semibold my-1"> Tech Stack - </span> JavaScript, Node.js, React,
           MongoDB, Express, VanillaCSS
           <br />
-          <span className="font-semibold"> Testing - </span>
+          <span className="font-semibold my-1"> Testing - </span>
           Cypress, Jest <br />
-          <span className="font-semibold">Image Handling - </span>Cloudinary
+          <span className="font-semibold my-1">Image Handling - </span>Cloudinary
         </span>
-        <span className="text-fedblue"> A pintrest style Image sharing app, designed to be a postive place on the internet for those suffering with hairloss </span>
+        <span className="text-fedblue my-1"> A pintrest style Image sharing app, designed to be a postive place on the internet for those suffering with hairloss </span>
         <div className="flex w-full justify-center">
           <Image
             src="/BaldBibleHome.jpg"
