@@ -14,7 +14,7 @@ const Baldbible = () => {
         <div className="flex flex-col items-center space-y-4">
           {/* Title and Tech Stack */}
           <h1 className="text-fedblue text-3xl font-bold mt-3">Bald Bible</h1>
-          <span className="text-honblue text-xl">Tech Stack</span>
+          <span className="text-honblue text-xl font-bold">Tech Stack</span>
           <span className="text-honblue text-lg text-center">
             Node.js, React, MongoDB, Express, VanillaCSS, Jest, Cypress,
             Cloudinary
@@ -24,7 +24,7 @@ const Baldbible = () => {
           <h2 className="text-fedblue text-2xl font-bold text-center">
             Overview
           </h2>
-          <p className="text-fedblue text-center">
+          <p className="text-fedblue">
             Our final group project while at Makers. Our team consisted of 4
             software developers and 2 quality engineers, and we were given 8
             days to reach MVP building anything we liked which we would then
@@ -100,7 +100,7 @@ const Baldbible = () => {
           <h2 className="text-fedblue text-2xl font-bold text-center">
             Planning
           </h2>
-          <span className="text-fedblue text-center">
+          <span className="text-fedblue">
             As a team we quickly agreed upon using the MERN stack, this was
             because we all had experience building using the stack but there
             were still plenty of learning opportunities and optimisations, we
@@ -123,7 +123,7 @@ const Baldbible = () => {
           <span className="text-fedblue text-center font-bold">
             Our wireframe pages for Bald Bible made during the planning stage
           </span>
-          <span className="text-fedblue text-center">
+          <span className="text-fedblue">
             As a team we followed AGILE working principles and used a trello
             board to break down the tasks which needed doing and make sure we
             got the most out of each sprint. This also made sure each team

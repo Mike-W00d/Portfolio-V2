@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import ToastButton from "@/components/toastButton";
 
 const PortfolioCarosel = () => {
   return (
@@ -44,6 +45,7 @@ const PortfolioCarosel = () => {
               Learn more about this project
             </Button>
           </a>
+          <ToastButton message="You're already on it :)" buttonName="View Live Site" />
         </div>
       </div>
     </div>
