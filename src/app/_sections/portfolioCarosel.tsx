@@ -40,7 +40,7 @@ const PortfolioCarosel = () => {
               alt="GitHub logo and link to my Next-Portfolio GitHub repository"
             />
           </a>
-          <a href="/projects/Portfolio">
+          <a href="/projects/next-port">
             <Button className="bg-fedblue hover:bg-honblue">
               Learn more about this project
             </Button>
