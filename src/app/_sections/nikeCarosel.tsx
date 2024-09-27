@@ -6,17 +6,12 @@ const NikeCarosel = () => {
   return (
     <div>
     <div className="flex bg-white w-full rounded-lg shadow-xl flex-col p-6">
-      <span className="text-fedblue text-4xl font-bold">Nike Clone</span>{" "}
-      {/* Increased text size */}
-      <span className="text-honblue text-2xl font-bold">
-        Primary Language - JavaScript
-      </span>{" "}
-      {/* Adjusted text size */}
+      <span className="text-fedblue text-4xl font-bold py-1">Nike Clone</span>{" "}
       <span className="text-honblue text-lg">
-        <span className="font-semibold"> Tech Stack - </span> Next.js, React,
+        <span className="font-semibold py-1"> Tech Stack -</span> Next.js, React,
         TailwindCSS, JavaScript
       </span>
-      <span className="text-fedblue"> A responsive UI built with mocking data to act as if it was streamed from a backend</span>
+      <span className="text-fedblue py-1"> A responsive UI built with mocking data to act as if it was streamed from a backend</span>
       <div className="flex w-full justify-center">
         <Image
           src="/nikeHome.png"
