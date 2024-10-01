@@ -7,14 +7,14 @@ const PortfolioCarosel = () => {
   return (
     <div>
       <div className="flex bg-white w-full rounded-lg shadow-xl flex-col p-6">
-        <span className="text-fedblue text-4xl font-bold my-1">Next Portfolio</span>{" "}
-        <span className="text-honblue text-lg my-1">
+        <span className="text-fedblue text-4xl font-bold py-1">Next Portfolio</span>{" "}
+        <span className="text-honblue text-lg py-1">
           <span className="font-semibold my-1"> Tech Stack - </span> TypeScript, Next.js, React, MongoDB, Resend,
           TailwindCSS, GoogleRecaptcha
           <br />
-          <span className="font-semibold my-1">Image Handling - </span>Cloudinary, React photo album, Not another react Lightbox
+          <span className="font-semibold py-1">Image Handling - </span>Cloudinary, React photo album, Not another react Lightbox
         </span>
-        <span className="text-fedblue my-1">
+        <span className="text-fedblue py-1">
           {" "} 
           My own developer Portfolio built in Next.js to show off my projects, photos and give people an easy way to get in touch with me{" "}
         </span>
