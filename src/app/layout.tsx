@@ -27,31 +27,44 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+        <link
+          rel="icon"
+          type="image/png"
+          href="/favicon-96x96.png"
+          sizes="96x96"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <meta name="apple-mobile-web-app-title" content="mgmwood.com" />
+        <link rel="manifest" href="/site.webmanifest" />
       <body className={cn(inter.className)}>
         <GoogleCaptchaWrapper>
-        <Header />
-        <div className="flex">
-          <div className="absolute inset-0 -z-10">
-            <Image
-              src="/background.jpg"
-              alt="grey background"
-              fill={true}
-              className="object-cover"
-            />
-          </div>
-          <SideNav />
-          <div className="w-full overflow-x-hidden">
-            <div className="h-[calc(100vh-64px)] overflow-auto">
-              <div className="w-full flex justify-center mx-auto h-[calc(100vh - 120px)] overflow-y-auto relative">
-                <div className="w-full md:max-w-6xl">
-                  <Providers>
-                  {children}
-                  </Providers>
+          <Header />
+          <div className="flex">
+            <div className="absolute inset-0 -z-10">
+              <Image
+                src="/background.jpg"
+                alt="grey background"
+                fill={true}
+                className="object-cover"
+              />
+            </div>
+            <SideNav />
+            <div className="w-full overflow-x-hidden">
+              <div className="h-[calc(100vh-64px)] overflow-auto">
+                <div className="w-full flex justify-center mx-auto h-[calc(100vh - 120px)] overflow-y-auto relative">
+                  <div className="w-full md:max-w-6xl">
+                    <Providers>{children}</Providers>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </GoogleCaptchaWrapper>
       </body>
     </html>
