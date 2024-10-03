@@ -24,21 +24,21 @@ const About = () => {
           </p>
           <p className="text-lg mt-4">
             Since completing the bootcamp, I have worked on solo projects, focusing on frameworks like <strong>Next.js</strong>, 
-            <strong>Typescript</strong>, and <strong>Tailwind CSS</strong>. Feel free to explore my <a href="/projects" className="text-fedblue font-semibold">projects page</a> or my <a href="https://github.com" className="text-fedblue font-semibold">GitHub</a> to see what I&apos;ve been building lately!
+            and learning <strong>Typescript</strong>, and <strong>Tailwind CSS</strong>. Feel free to explore my <a href="/projects" className="text-fedblue font-semibold">projects page</a> or my <a href="https://github.com" className="text-fedblue font-semibold">GitHub</a> to see what I&apos;ve been building lately!
           </p>
           <p className="text-lg mt-4">
-            This very portfolio website was built by me using <strong>Next.js</strong>, <strong>Typescript</strong>, <strong>Tailwind CSS</strong>, and a <strong>MongoDB</strong> database.
+            I built this portfolio website using <strong>Next.js</strong>, <strong>Typescript</strong>, <strong>Tailwind CSS</strong>, and a <strong>MongoDB</strong> database.
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-xl text-honblue font-semibold">Business Background</h2>
           <p className="text-lg mt-4">
-            I hold a degree in Business Management & Accounting and Finance from Nottingham Trent University.
+            I have a degree in Business Management & Accounting and Finance from Nottingham Trent University.
             During my degree, I completed a year-long industry placement in the construction sector.
             Initially, I started in management but quickly transitioned into sales due to my strong interpersonal skills.
-            Balancing full-time work while studying gave me excellent time management and self-motivation skills.
-            I even had the opportunity to work on some of the UK&apos;s largest infrastructure projects, including <strong>HS2</strong>.
+            I decided to keep my full time job in sales while going back to university. Balancing full-time work while studying gave me excellent time management and self-motivation skills.
+            During my time in the industry I had the opportunity to work on some of the UK&apos;s largest infrastructure projects, including <strong>HS2</strong>.
           </p>
         </section>
 
