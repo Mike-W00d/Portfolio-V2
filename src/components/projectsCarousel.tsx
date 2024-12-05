@@ -1,3 +1,7 @@
+import AcebookCarosel from "@/app/(sections)/acebookCarosel";
+import BaldBibleCarosel from "@/app/(sections)/baldCarosel";
+import NikeCarosel from "@/app/(sections)/nikeCarosel";
+import PortfolioCarosel from "@/app/(sections)/portfolioCarosel";
 import {
   Carousel,
   CarouselContent,
@@ -6,21 +10,16 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import BaldBibleCarosel from "@/app/(sections)/baldCarosel";
-import AcebookCarosel from "@/app/(sections)/acebookCarosel";
-import PortfolioCarosel from "@/app/(sections)/portfolioCarosel";
-import NikeCarosel from "@/app/(sections)/nikeCarosel";
-
 export function ProjectsCarousel() {
   return (
     <Carousel
       opts={{
         align: "start",
       }}
-      className="w-full max-w-4xl h-max"
+      className="h-max w-full max-w-4xl"
     >
       <CarouselContent>
-        <CarouselItem className="h-[80vh] w-[80vh]">
+        <CarouselItem className="size-[80vh]">
           <BaldBibleCarosel />
         </CarouselItem>
         <CarouselItem>
@@ -33,8 +32,8 @@ export function ProjectsCarousel() {
           <AcebookCarosel />
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-fedblue text-white rounded-r-full shadow-lg" />
-      <CarouselNext className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-fedblue text-white rounded-l-full shadow-lg" />
+      <CarouselPrevious className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-r-full bg-fedblue p-2 text-white shadow-lg" />
+      <CarouselNext className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-l-full bg-fedblue p-2 text-white shadow-lg" />
     </Carousel>
   );
 }

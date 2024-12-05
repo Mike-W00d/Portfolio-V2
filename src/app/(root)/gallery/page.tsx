@@ -1,38 +1,35 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import React, { useState, useEffect } from "react";
 import {
   RenderImageContext,
   RenderImageProps,
   RowsPhotoAlbum,
 } from "react-photo-album";
-import "react-photo-album/rows.css";
-
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-
+import "react-photo-album/rows.css";
+import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import Captions from "yet-another-react-lightbox/plugins/captions";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 
-interface Photo {     
-  src: string;  
-  description: string;  
-  height: number;       
-  width: number;      
-  _id: string;      
+interface Photo {
+  src: string;
+  description: string;
+  height: number;
+  width: number;
+  _id: string;
 }
 
 function renderNextImage(
   { alt = "", title, sizes }: RenderImageProps,
-  { photo, width, height }: RenderImageContext<Photo>
+  { photo, width, height }: RenderImageContext<Photo>,
 ) {
-
   /// needed to avoid rendering an image without a url
   if (!photo.src) return null;
 
@@ -45,7 +42,7 @@ function renderNextImage(
       }}
     >
       <Image
-        src={photo.src} 
+        src={photo.src}
         alt={photo.description || alt}
         width={photo.width || 500}
         height={photo.height || 500}
@@ -58,13 +55,13 @@ function renderNextImage(
 
 export default function PhotoGallery() {
   const [index, setIndex] = useState(-1);
-  const [photos, setPhotos] = useState<Photo[]>([]); 
+  const [photos, setPhotos] = useState<Photo[]>([]);
 
   // Fetch photos from the API
   const fetchPhotos = async (): Promise<Photo[]> => {
     const res = await fetch("/api/photos");
     const photos: Photo[] = await res.json();
-    return photos.map(photo => ({
+    return photos.map((photo) => ({
       src: photo.src,
       description: photo.description,
       height: photo.height,
@@ -82,9 +79,9 @@ export default function PhotoGallery() {
   return (
     <>
       <RowsPhotoAlbum
-        photos={photos.map(photo => ({
-          ...photo,          
-          key: photo._id    
+        photos={photos.map((photo) => ({
+          ...photo,
+          key: photo._id,
         }))}
         render={{ image: renderNextImage }}
         targetRowHeight={500}
@@ -99,8 +96,8 @@ export default function PhotoGallery() {
       />
 
       <Lightbox
-        slides={photos.map(photo => ({
-          src: photo.src, 
+        slides={photos.map((photo) => ({
+          src: photo.src,
           alt: photo.description || "No description available",
           title: photo.description || "No description available",
           width: photo.width,

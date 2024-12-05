@@ -1,9 +1,16 @@
-'use client';
+"use client";
 
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
-export default function ToastButton({ message, buttonName }: { message: string; buttonName: string }) {
+import { Button } from "@/components/ui/button";
+
+export default function ToastButton({
+  message,
+  buttonName,
+}: {
+  message: string;
+  buttonName: string;
+}) {
   return (
     <Button
       onClick={() => {
@@ -12,6 +19,6 @@ export default function ToastButton({ message, buttonName }: { message: string; 
       className="bg-fedblue text-white hover:bg-honblue"
     >
       {buttonName}
-    </Button> 
+    </Button>
   );
 }

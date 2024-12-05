@@ -1,16 +1,18 @@
-'use client';
+/* eslint-disable array-callback-return */
+"use client";
 
-import { Fragment, useEffect, useState } from 'react';
-import Link from 'next/link';
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { Fragment, useEffect, useState } from "react";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { NavItems } from '@/config';
-import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+} from "@/components/ui/tooltip";
+import { NavItems } from "@/config";
+import { cn } from "@/lib/utils";
 
 export default function SideNav() {
   const navItems = NavItems();
@@ -23,8 +25,8 @@ export default function SideNav() {
     // Delay logic until the component is mounted
     setIsMounted(true);
 
-    if (typeof window !== 'undefined') {
-      const saved = window.localStorage.getItem('sidebarExpanded');
+    if (typeof window !== "undefined") {
+      const saved = window.localStorage.getItem("sidebarExpanded");
       if (saved !== null) {
         setIsSidebarExpanded(JSON.parse(saved));
       }
@@ -32,9 +34,9 @@ export default function SideNav() {
   }, []);
 
   useEffect(() => {
-    if (isMounted && typeof window !== 'undefined') {
+    if (isMounted && typeof window !== "undefined") {
       window.localStorage.setItem(
-        'sidebarExpanded',
+        "sidebarExpanded",
         JSON.stringify(isSidebarExpanded),
       );
     }
@@ -46,23 +48,23 @@ export default function SideNav() {
 
   // If the component is not mounted, avoid rendering dynamic content
   if (!isMounted) {
-    return <div className='w-[74px] bg-fedblue'></div>;
+    return <div className="w-[74px] bg-fedblue"></div>;
   }
 
   return (
-    <div className='pr-4 bg-transparent'>
+    <div className="bg-transparent pr-4">
       <div
         className={cn(
-          isSidebarExpanded ? 'w-[200px]' : 'w-[68px]',
-          'border-r transition-all duration-300 ease-in-out transform hidden sm:flex h-full bg-fedblue',
+          isSidebarExpanded ? "w-[200px]" : "w-[68px]",
+          "border-r transition-all duration-300 ease-in-out transform hidden sm:flex h-full bg-fedblue",
         )}
       >
-        <aside className="flex h-full flex-col w-full break-words px-4 overflow-x-hidden columns-1 bg-fedblue">
+        <aside className="flex size-full columns-1 flex-col overflow-x-hidden break-words bg-fedblue px-4">
           {/* Top */}
-          <div className="mt-6 relative pb-2">
+          <div className="relative mt-6 pb-2">
             <div className="flex flex-col space-y-1">
               {navItems.map((item, idx) => {
-                if (item.position === 'top') {
+                if (item.position === "top") {
                   return (
                     <Fragment key={idx}>
                       <div className="space-y-1">
@@ -81,9 +83,9 @@ export default function SideNav() {
             </div>
           </div>
           {/* Bottom */}
-          <div className="sticky bottom-0 mt-auto whitespace-nowrap mb-4 transition duration-200 block">
+          <div className="sticky bottom-0 mb-4 mt-auto block whitespace-nowrap transition duration-200">
             {navItems.map((item, idx) => {
-              if (item.position === 'bottom') {
+              if (item.position === "bottom") {
                 return (
                   <Fragment key={idx}>
                     <div className="space-y-1">
@@ -101,16 +103,16 @@ export default function SideNav() {
             })}
           </div>
         </aside>
-        <div className="mt-[calc(calc(60vh)-10px)] relative">
+        <div className="relative mt-[calc(calc(60vh)-10px)]">
           <button
             type="button"
-            className="absolute top right-[-12px] flex h-6 w-6 items-center justify-center border border-muted-foreground/20 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out"
+            className="absolute right-[-12px] flex size-6 items-center justify-center rounded-full border border-muted-foreground/20 bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-lg"
             onClick={toggleSidebar}
           >
             {isSidebarExpanded ? (
-              <ChevronLeft size={16} className='stroke-foreground'/>
+              <ChevronLeft size={16} className="stroke-foreground" />
             ) : (
-              <ChevronRight size={16} className='stroke-foreground'/>
+              <ChevronRight size={16} className="stroke-foreground" />
             )}
           </button>
         </div>
@@ -131,13 +133,13 @@ export const SideNavItem: React.FC<{
       {isSidebarExpanded ? (
         <Link
           href={path}
-          className={`h-full relative flex items-center whitespace-nowrap rounded-md ${
+          className={`relative flex h-full items-center whitespace-nowrap rounded-md ${
             active
-              ? 'font-base text-sm bg-white shadow-sm text-black'
-              : 'hover:bg-white hover:text-black text-white'
+              ? "bg-white text-sm text-black shadow-sm"
+              : "text-white hover:bg-white hover:text-black"
           }`}
         >
-          <div className="relative font-base text-sm py-1.5 px-2 flex flex-row items-center space-x-2 rounded-md duration-100">
+          <div className="relative flex flex-row items-center space-x-2 rounded-md px-2 py-1.5 text-sm duration-100">
             {icon}
             <span>{label}</span>
           </div>
@@ -148,13 +150,13 @@ export const SideNavItem: React.FC<{
             <TooltipTrigger>
               <Link
                 href={path}
-                className={`h-full relative flex items-center whitespace-nowrap rounded-md ${
+                className={`relative flex h-full items-center whitespace-nowrap rounded-md ${
                   active
-                    ? 'font-base text-sm bg-white text-black'
-                    : 'hover:bg-white hover:text-black text-white'
+                    ? "bg-white text-sm text-black"
+                    : "text-white hover:bg-white hover:text-black"
                 }`}
               >
-                <div className="relative font-base text-sm p-2 flex flex-row items-center space-x-2 rounded-md duration-100">
+                <div className="relative flex flex-row items-center space-x-2 rounded-md p-2 text-sm duration-100">
                   {icon}
                 </div>
               </Link>

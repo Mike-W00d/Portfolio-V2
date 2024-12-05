@@ -1,60 +1,51 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import { Menu } from "lucide-react";
+import Link from "next/link";
+import React, { useState } from "react";
 
-import Link from 'next/link';
-
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet';
-import { NavItems } from '@/config';
-import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
+import { NavItems } from "@/config";
 
 export default function Header() {
   const navItems = NavItems();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex items-center h-16 px-4 border-b shrink-0 md:px-6 justify-between bg-fedblue border-fedblue">
+    <header className="flex h-16 shrink-0 items-center justify-between border-b border-fedblue bg-fedblue px-4 md:px-6">
       <Link
         href="/"
         className="flex items-center gap-2 text-xl font-semibold md:text-base"
         prefetch={false}
       >
         {/* <span className="w-8 h-8 border bg-accent rounded-full" /> */}
-        <span className='text-2xl text-white'>Michael Wood</span>
+        <span className="text-2xl text-white">Michael Wood</span>
       </Link>
 
       <div className="ml-4 flex items-center gap-3">
-
-        <button onClick={() => setIsOpen(true)} className="block sm:hidden bg-white rounded-sm hover:lb">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="block rounded-sm bg-white sm:hidden"
+        >
           <Menu size={24} />
         </button>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetContent side="right" className='block md:hidden'>
+          <SheetContent side="right" className="block md:hidden">
             <SheetTitle>Menu</SheetTitle>
-            <div className="pt-4  overflow-y-auto h-fit w-full flex flex-col gap-1">
+            <div className="flex  h-fit w-full flex-col gap-1 overflow-y-auto pt-4">
               {navItems.map((navItem, idx) => (
                 <Link
                   key={idx}
                   href={navItem.href}
                   onClick={() => setIsOpen(false)}
-                  className={`h-full relative flex items-center whitespace-nowrap rounded-md ${
+                  className={`relative flex h-full items-center whitespace-nowrap rounded-md ${
                     navItem.active
-                      ? 'font-base text-sm bg-neutral-200 shadow-sm text-neutral-700 dark:bg-neutral-800 dark:text-white'
-                      : 'hover:bg-neutral-200  hover:text-neutral-700 text-neutral-500 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white'
+                      ? "bg-neutral-200 text-sm font-bold text-neutral-700 shadow-sm dark:bg-neutral-800 dark:text-white"
+                      : "text-neutral-500  hover:bg-neutral-200 hover:text-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
                   }`}
                 >
-                  <div className="relative font-base text-sm py-1.5 px-2 flex flex-row items-center space-x-2 rounded-md duration-100">
+                  <div className="relative flex flex-row items-center space-x-2 rounded-md px-2 py-1.5 text-sm font-bold duration-100">
                     {navItem.icon}
                     <span>{navItem.name}</span>
                   </div>

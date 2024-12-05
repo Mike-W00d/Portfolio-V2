@@ -1,10 +1,9 @@
 const Footer = () => {
-  
   return (
-    <div className="flex justify-center position:absolute bottom-0 bg-transparent text-fedblue w-full pt-9 pb-5">
+    <div className="position:absolute bottom-0 flex w-full justify-center bg-transparent pb-5 pt-9 text-fedblue">
       <span> Copyright &#169; 2024 Michael Wood. All Rights Reserved</span>
     </div>
-  )
-}
+  );
+};
 
 export default Footer;

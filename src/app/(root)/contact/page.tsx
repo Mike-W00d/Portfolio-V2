@@ -1,7 +1,6 @@
-import ContactForm from "@/components/contact-form";
-import { Contact } from "@/app/(sections)";
-import { Section } from "lucide-react";
 import { Metadata } from "next";
+
+import ContactForm from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact | Michael Wood | Full Stack Developer",
@@ -9,12 +8,12 @@ export const metadata: Metadata = {
 
 const page = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full w-max-4xl mt-4">
-        <h1 className="text-4xl text-fedblue font-bold justify-center mb-4">
-          {" "}
-          Get in Touch{" "}
-        </h1>
-        <ContactForm />
+    <div className="mt-4 flex w-full max-w-3xl flex-col items-center justify-center">
+      <h1 className="mb-4 justify-center text-4xl font-bold text-fedblue">
+        {" "}
+        Get in Touch{" "}
+      </h1>
+      <ContactForm />
     </div>
   );
 };

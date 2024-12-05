@@ -1,15 +1,15 @@
 import { Metadata } from "next";
+
 import { Hero, About, Contact, Footer } from "@/app/(sections)";
 
 export const metadata: Metadata = {
-  title: 'Homepage | Michael Wood | Full Stack Developer',
+  title: "Homepage | Michael Wood | Full Stack Developer",
 };
-
 
 export default function Home() {
   return (
     <div>
-      <section className="relative"> 
+      <section className="relative">
         <Hero />
       </section>
       <section id="about" className="relative">

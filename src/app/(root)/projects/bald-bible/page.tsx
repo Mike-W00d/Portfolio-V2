@@ -1,6 +1,7 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
-import { Metadata } from "next";
+
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -10,18 +11,18 @@ export const metadata: Metadata = {
 const Baldbible = () => {
   return (
     <section className="flex justify-center px-4 sm:px-6 lg:px-8">
-      <div className="flex rounded-lg bg-white flex-col w-full max-w-4xl p-4 sm:p-6 lg:p-8">
+      <div className="flex w-full max-w-4xl flex-col rounded-lg bg-white p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col items-center space-y-4">
           {/* Title and Tech Stack */}
-          <h1 className="text-fedblue text-3xl font-bold mt-3">Bald Bible</h1>
-          <span className="text-honblue text-xl font-bold">Tech Stack</span>
-          <span className="text-honblue text-lg text-center">
+          <h1 className="mt-3 text-3xl font-bold text-fedblue">Bald Bible</h1>
+          <span className="text-xl font-bold text-honblue">Tech Stack</span>
+          <span className="text-center text-lg text-honblue">
             Node.js, React, MongoDB, Express, VanillaCSS, Jest, Cypress,
             Cloudinary
           </span>
 
           {/* Overview */}
-          <h2 className="text-fedblue text-2xl font-bold text-center">
+          <h2 className="text-center text-2xl font-bold text-fedblue">
             Overview
           </h2>
           <p className="text-fedblue">
@@ -36,7 +37,7 @@ const Baldbible = () => {
             you products to try preventing hair loss rather than encouraging you
             to embrace it.
           </p>
-          <ul className="text-fedblue list-disc list-inside space-y-1">
+          <ul className="list-inside list-disc space-y-1 text-fedblue">
             <li>8 days to MVP</li>
             <li>
               Main Language: JavaScript - React frontend & Node.js backend
@@ -54,15 +55,15 @@ const Baldbible = () => {
             alt="My team and I presenting Bald Bible"
             width={1200}
             height={1200}
-            className="w-full max-w-sm sm:max-w-md lg:max-w-2xl object-contain"
+            className="w-full max-w-sm object-contain sm:max-w-md lg:max-w-2xl"
           />
-          <span className="text-fedblue text-center font-bold">
+          <span className="text-center font-bold text-fedblue">
             Myself and my team presenting the tech demo below live at our demo
             day event.
           </span>
 
           {/* Tech Functionality Demo */}
-          <h2 className="text-fedblue text-2xl font-bold text-center">
+          <h2 className="text-center text-2xl font-bold text-fedblue">
             Tech Functionality Demo
           </h2>
           <iframe
@@ -77,10 +78,10 @@ const Baldbible = () => {
             className="w-full max-w-sm sm:max-w-md lg:max-w-2xl"
           ></iframe>
 
-          <h3 className="text-xl text-honblue font-bold">
+          <h3 className="text-xl font-bold text-honblue">
             Achieved Functionality
           </h3>
-          <ul className="text-fedblue list-disc list-inside space-y-1">
+          <ul className="list-inside list-disc space-y-1 text-fedblue">
             <li>Login: Must be unique email and correct password</li>
             <li>Signup: Valid format, password length, special character</li>
             <li>Password Security: Bcrypt-hashed passwords</li>
@@ -97,7 +98,7 @@ const Baldbible = () => {
           </ul>
 
           {/* Planning */}
-          <h2 className="text-fedblue text-2xl font-bold text-center">
+          <h2 className="text-center text-2xl font-bold text-fedblue">
             Planning
           </h2>
           <span className="text-fedblue">
@@ -118,9 +119,9 @@ const Baldbible = () => {
             alt="Wireframe pages of Bald Bible made while planning"
             width={1200}
             height={1200}
-            className="w-full max-w-sm sm:max-w-md lg:max-w-2xl object-contain"
+            className="w-full max-w-sm object-contain sm:max-w-md lg:max-w-2xl"
           />
-          <span className="text-fedblue text-center font-bold">
+          <span className="text-center font-bold text-fedblue">
             Our wireframe pages for Bald Bible made during the planning stage
           </span>
           <span className="text-fedblue">
@@ -135,18 +136,18 @@ const Baldbible = () => {
             alt="Our Trello board for Bald Bible"
             width={1200}
             height={1200}
-            className="w-full max-w-sm sm:max-w-md lg:max-w-2xl object-contain"
+            className="w-full max-w-sm object-contain sm:max-w-md lg:max-w-2xl"
           />
-          <span className="text-fedblue text-center font-bold">
+          <span className="text-center font-bold text-fedblue">
             Our Trello board for Bald Bible showing our progress and tasks to
             complete
           </span>
 
           {/* My Responsibilities */}
-          <h2 className="text-fedblue text-2xl font-bold text-center">
+          <h2 className="text-center text-2xl font-bold text-fedblue">
             My Responsibilities
           </h2>
-          <ul className="text-fedblue list-disc list-inside space-y-1">
+          <ul className="list-inside list-disc space-y-1 text-fedblue">
             <li>
               Converting our user stories and wireframe component tree into
               manageable Trello tickets with an accurate time estimate for each.
@@ -187,10 +188,10 @@ const Baldbible = () => {
           </ul>
 
           {/* Reflection */}
-          <h2 className="text-fedblue text-2xl font-bold text-center">
+          <h2 className="text-center text-2xl font-bold text-fedblue">
             Reflection
           </h2>
-          <h3 className="text-honblue font-bold"> Image Upload </h3>
+          <h3 className="font-bold text-honblue"> Image Upload </h3>
           <span className="text-fedblue">
             This was the first time any of us on the team had worked with
             handling images. I took charge of the ticket for image upload as I
@@ -203,7 +204,7 @@ const Baldbible = () => {
             working and connected to the database, it was a good experience
             working on something completely new to me.
           </span>
-          <h3 className="text-honblue font-bold"> Version Control </h3>
+          <h3 className="font-bold text-honblue"> Version Control </h3>
           <span className="text-fedblue">
             Working in a team of 4 developers all on the same project led to a
             few issues with merge conflicts. We had a clear system in place to
@@ -215,7 +216,7 @@ const Baldbible = () => {
             editor. I have since learned more about rebasing which would have
             been helpful when working on this project.
           </span>
-          <h3 className="text-honblue font-bold"> Environment Variables </h3>
+          <h3 className="font-bold text-honblue"> Environment Variables </h3>
           <span className="text-fedblue">
             Using both MongoDB Atlas and Cloudinary we had quite a lot of local
             environment variables which you would not get added to your local
@@ -227,7 +228,7 @@ const Baldbible = () => {
             .ENV / config.
           </span>
           {/* Links */}
-          <div className="flex space-x-4 items-center pt-3">
+          <div className="flex items-center space-x-4 pt-3">
             <a href="/projects">
               <Button className="bg-fedblue hover:bg-honblue">
                 See More Projects
@@ -238,7 +239,7 @@ const Baldbible = () => {
                 src="/github.png"
                 height={50}
                 width={40}
-                className="hover:cursor-pointer hover:scale-110"
+                className="hover:scale-110 hover:cursor-pointer"
                 alt="GitHub logo and link to my Bald Bible GitHub repository"
               />
             </a>

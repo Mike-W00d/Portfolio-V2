@@ -1,21 +1,27 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
+
 import { Button } from "@/components/ui/button";
 
 const BaldBibleCarosel = () => {
   return (
     <div>
-      <div className="flex bg-white w-full rounded-lg shadow-xl flex-col p-6">
-        <span className="text-fedblue text-4xl font-bold my-1">Bald Bible</span>{" "}
-        <span className="text-honblue text-lg">
-          <span className="font-semibold my-1"> Tech Stack - </span> JavaScript, Node.js, React,
-          MongoDB, Express, VanillaCSS
+      <div className="flex w-full flex-col rounded-lg bg-white p-6 shadow-xl">
+        <span className="my-1 text-4xl font-bold text-fedblue">Bald Bible</span>{" "}
+        <span className="text-lg text-honblue">
+          <span className="my-1 font-semibold"> Tech Stack - </span> JavaScript,
+          Node.js, React, MongoDB, Express, VanillaCSS
           <br />
-          <span className="font-semibold my-1"> Testing - </span>
+          <span className="my-1 font-semibold"> Testing - </span>
           Cypress, Jest <br />
-          <span className="font-semibold my-1">Image Handling - </span>Cloudinary
+          <span className="my-1 font-semibold">Image Handling - </span>
+          Cloudinary
         </span>
-        <span className="text-fedblue my-1"> A pintrest style Image sharing app, designed to be a postive place on the internet for those suffering with hairloss </span>
+        <span className="my-1 text-fedblue">
+          {" "}
+          A pintrest style Image sharing app, designed to be a postive place on
+          the internet for those suffering with hairloss{" "}
+        </span>
         <div className="flex w-full justify-center">
           <Image
             src="/BaldBibleHome.jpg"
@@ -25,7 +31,7 @@ const BaldBibleCarosel = () => {
             className="rounded-lg"
           />
         </div>
-        <div className="flex justify-center align-middle space-x-4 items-center m-5">
+        <div className="m-5 flex items-center justify-center space-x-4 align-middle">
           <a
             href="https://github.com/Mike-W00d/Bald-Bible"
             className="text-blue-500"
@@ -34,7 +40,7 @@ const BaldBibleCarosel = () => {
               src="/github.png"
               height={50}
               width={40}
-              className="hover:cursor-pointer hover:scale-110"
+              className="hover:scale-110 hover:cursor-pointer"
               alt="GitHub logo and link to Bald Bible GitHub repository"
             />
           </a>

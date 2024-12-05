@@ -1,13 +1,9 @@
-import { Metadata } from "next"
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Blog',
-} 
+  title: "Blog",
+};
 
 export default function Page() {
-  return (
-    <div>
-      Blog Coming Soon
-    </div>
-  )
+  return <div>Blog Coming Soon</div>;
 }

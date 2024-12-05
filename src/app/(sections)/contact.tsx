@@ -2,19 +2,19 @@ import Image from "next/image";
 
 const Contact = () => {
   return (
-    <div className="flex mt-10 w-full justify-center gap-10 px-4 ">
-      <div className="flex flex-col justify-center bg-white shadow-xl rounded-full p-8 w-full max-w-xl">
-        <h1 className="text-xl font-bold text-fedblue text-center mb-4">
+    <div className="mt-10 flex w-full justify-center gap-10 px-4 ">
+      <div className="flex w-full max-w-xl flex-col justify-center rounded-full bg-white p-8 shadow-xl">
+        <h1 className="mb-4 text-center text-xl font-bold text-fedblue">
           Quick Links
         </h1>
-        <div className="w-full flex justify-between items-center">
+        <div className="flex w-full items-center justify-between">
           <a href="mailto:mgwood22@sky.com">
             <Image
               src="/email.png"
               alt="Email logo and Link to email me"
               width={50}
               height={50}
-              className="hover:cursor-pointer hover:scale-110"
+              className="hover:scale-110 hover:cursor-pointer"
             />
           </a>
           <a href="https://github.com/Mike-W00d">
@@ -23,7 +23,7 @@ const Contact = () => {
               alt="Github logo and Link to my GitHub"
               width={40}
               height={40}
-              className="hover:cursor-pointer hover:scale-110"
+              className="hover:scale-110 hover:cursor-pointer"
             />
           </a>
           <a href="https://www.linkedin.com/in/mike-wood22/">
@@ -32,7 +32,7 @@ const Contact = () => {
               alt="LinkedIn logo and Link to my LinkedIn"
               width={40}
               height={40}
-              className="hover:cursor-pointer hover:scale-110"
+              className="hover:scale-110 hover:cursor-pointer"
             />
           </a>
           <a href="https://www.instagram.com/michael_w00d/">
@@ -41,7 +41,7 @@ const Contact = () => {
               alt="Instagram logo and Link to my Instagram"
               width={40}
               height={40}
-              className="hover:cursor-pointer hover:scale-110"
+              className="hover:scale-110 hover:cursor-pointer"
             />
           </a>
         </div>

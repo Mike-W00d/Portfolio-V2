@@ -1,6 +1,11 @@
-import { usePathname } from 'next/navigation';
-
-import { Bell, Images, Home, Presentation, Settings, User, MessageSquareMore, Contact } from 'lucide-react';
+import {
+  Images,
+  Home,
+  Presentation,
+  MessageSquareMore,
+  Contact,
+} from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export const NavItems = () => {
   const pathname = usePathname();
@@ -11,39 +16,39 @@ export const NavItems = () => {
 
   return [
     {
-      name: 'Home',
-      href: '/',
+      name: "Home",
+      href: "/",
       icon: <Home size={20} />,
-      active: pathname === '/',
-      position: 'top',
+      active: pathname === "/",
+      position: "top",
     },
     {
-      name: 'Projects',
-      href: '/projects',
+      name: "Projects",
+      href: "/projects",
       icon: <Presentation size={20} />,
-      active: isNavItemActive(pathname, '/projects'),
-      position: 'top',
+      active: isNavItemActive(pathname, "/projects"),
+      position: "top",
     },
     {
-      name: 'Blog',
-      href: '/blog',
+      name: "Blog",
+      href: "/blog",
       icon: <MessageSquareMore size={20} />,
-      active: isNavItemActive(pathname, '/blog'),
-      position: 'top',
+      active: isNavItemActive(pathname, "/blog"),
+      position: "top",
     },
     {
-      name: 'Gallery',
-      href: '/gallery',
+      name: "Gallery",
+      href: "/gallery",
       icon: <Images size={20} />,
-      active: isNavItemActive(pathname, '/gallery'),
-      position: 'top',
+      active: isNavItemActive(pathname, "/gallery"),
+      position: "top",
     },
     {
-      name: 'Contact',
-      href: '/contact',
+      name: "Contact",
+      href: "/contact",
       icon: <Contact size={20} />,
-      active: isNavItemActive(pathname, '/contact'),
-      position: 'top',
+      active: isNavItemActive(pathname, "/contact"),
+      position: "top",
     },
   ];
 };

@@ -1,14 +1,15 @@
 "use client";
 
-import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { ContactFormSchema } from "@/lib/models/contactSchema";
-import { sendEmail } from "@/app/api/_actions";
-import { toast } from "sonner";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useState, FormEvent } from "react";
 import axios from "axios";
+import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import { sendEmail } from "@/app/api/_actions";
+import { ContactFormSchema } from "@/lib/models/contactSchema";
 
 export type ContactFormInputs = z.infer<typeof ContactFormSchema>;
 
@@ -46,7 +47,10 @@ export default function ContactForm() {
       },
     });
 
-    if (recaptchaResponse?.data?.success && recaptchaResponse?.data?.score > 0.5) {
+    if (
+      recaptchaResponse?.data?.success &&
+      recaptchaResponse?.data?.score > 0.5
+    ) {
       // ReCaptcha passed; proceed to send the email
       const result = await sendEmail(data);
 
@@ -60,7 +64,9 @@ export default function ContactForm() {
         toast.error("Something went wrong!");
       }
     } else {
-      console.log(`ReCaptcha failed with score: ${recaptchaResponse?.data?.score}`);
+      console.log(
+        `ReCaptcha failed with score: ${recaptchaResponse?.data?.score}`,
+      );
       setSubmitMessage("Failed to verify ReCaptcha! You must be a robot!");
     }
   };
@@ -117,9 +123,7 @@ export default function ContactForm() {
           {...register("message")}
         />
         {errors.message?.message && (
-          <p className="ml-1 text-sm text-red-400">
-            {errors.message.message}
-          </p>
+          <p className="ml-1 text-sm text-red-400">{errors.message.message}</p>
         )}
       </div>
 
@@ -129,7 +133,7 @@ export default function ContactForm() {
       >
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
-      {submitMessage && <p className="text-lg text-center">{submitMessage}</p>}
+      {submitMessage && <p className="text-center text-lg">{submitMessage}</p>}
     </form>
   );
 }
