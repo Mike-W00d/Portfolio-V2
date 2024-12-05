@@ -1,5 +1,5 @@
 import ContactForm from "@/components/contact-form";
-import { Contact } from "@/app/_sections";
+import { Contact } from "@/app/(sections)";
 import { Section } from "lucide-react";
 import { Metadata } from "next";
 
