@@ -50,6 +50,7 @@ function renderNextImage(
         width={photo.width || 500}
         height={photo.height || 500}
         placeholder={"blurDataURL" in photo ? "blur" : undefined}
+        loading="eager"
       />
     </div>
   );
@@ -68,7 +69,7 @@ export default function PhotoGallery() {
       description: photo.description,
       height: photo.height,
       width: photo.width,
-      _id: photo._id, // Include _id if necessary
+      _id: photo._id,
     }));
   };
 

@@ -9,11 +9,7 @@ import { Button } from '@/components/ui/button';
 const About = () => {
   return (
     <div className="flex flex-col items-center bg-white p-4 rounded-lg shadow-lg">
-      <CldVideoPlayer
-        width="1080"
-        height="1080"
-        src="https://res.cloudinary.com/dpfptjeqd/video/upload/v1729520633/About_Video_wescry.mov"
-      />
+       <iframe width="316" height="562" src="https://www.youtube.com/embed/vcbH8Nv_9ew" title="About Me" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       <p className="mt-4 text-fedblue text-center">Any further questions please contact me</p>
       <a href="/#about">
         <Button className="bg-fedblue hover:bg-honblue mt-4">

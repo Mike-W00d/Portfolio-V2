@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./_sections/header";
+import Header from "@/app/(sections)/header";
 import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";

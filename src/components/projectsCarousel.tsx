@@ -6,10 +6,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import BaldBibleCarosel from "@/app/_sections/baldCarosel";
-import AcebookCarosel from "@/app/_sections/acebookCarosel";
-import PortfolioCarosel from "@/app/_sections/portfolioCarosel";
-import NikeCarosel from "@/app/_sections/nikeCarosel";
+import BaldBibleCarosel from "@/app/(sections)/baldCarosel";
+import AcebookCarosel from "@/app/(sections)/acebookCarosel";
+import PortfolioCarosel from "@/app/(sections)/portfolioCarosel";
+import NikeCarosel from "@/app/(sections)/nikeCarosel";
 
 export function ProjectsCarousel() {
   return (
