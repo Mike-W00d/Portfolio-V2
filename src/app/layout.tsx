@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -62,7 +63,10 @@ export default function RootLayout({
               <div className="h-[calc(100vh-64px)] overflow-auto">
                 <div className="relative mx-auto flex h-[calc(100vh-64px)] w-full justify-center overflow-y-auto">
                   <div className="w-full md:max-w-6xl">
-                    <Providers>{children}</Providers>
+                    <Providers>
+                      {children}
+                      <Analytics />
+                    </Providers>
                   </div>
                 </div>
               </div>
