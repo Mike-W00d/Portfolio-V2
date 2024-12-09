@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -66,6 +67,7 @@ export default function RootLayout({
                     <Providers>
                       {children}
                       <Analytics />
+                      <SpeedInsights />
                     </Providers>
                   </div>
                 </div>
