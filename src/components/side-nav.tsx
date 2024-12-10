@@ -52,7 +52,7 @@ export default function SideNav() {
   }
 
   return (
-    <div className="bg-transparent pr-4">
+    <div className="bg-transparent sm:pr-4">
       <div
         className={cn(
           isSidebarExpanded ? "w-[200px]" : "w-[68px]",

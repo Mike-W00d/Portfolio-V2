@@ -74,7 +74,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(processForm)}
-      className="mx-auto flex flex-1 flex-col gap-4 text-gray-600 sm:w-1/2 lg:w-1/3"
+      className="mx-auto flex w-full max-w-lg flex-1 flex-col gap-5 px-4 text-gray-600"
     >
       <div>
         <input
