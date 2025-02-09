@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import Alert from "@/components/blog-components/alert";
 import Container from "@/components/blog-components/container";
 import Header from "@/components/blog-components/header";
 import { PostBody } from "@/components/blog-components/post-body";
@@ -22,7 +21,6 @@ export default async function Post(props: Params) {
 
   return (
     <main>
-      <Alert preview={post.preview} />
       <Container>
         <Header />
         <article className="mb-32">

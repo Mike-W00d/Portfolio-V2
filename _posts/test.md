@@ -1,13 +1,13 @@
 ---
-title: "Dynamic Routing and Static Generation"
-excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
-coverImage: "/assets/blog/dynamic-routing/cover.jpg"
-date: "2020-03-16T05:35:07.322Z"
+title: "Testing 123"
+excerpt: "I needed more than 1 post to test it with if you're reading this I probably forgot to delete it"
+coverImage: "https://res.cloudinary.com/dpfptjeqd/image/upload/v1729250744/mgmwood.com/ssbkazatwpdue5jj0pyc.jpg"
+date: "2025-02-09T12:05:07.322Z"
 author:
-  name: JJ Kasper
-  picture: "/assets/blog/authors/jj.jpeg"
+  name: Michael Wood
+  picture: "/HERO2.png"
 ogImage:
-  url: "/assets/blog/dynamic-routing/cover.jpg"
+  url: "https://res.cloudinary.com/dpfptjeqd/image/upload/v1729250744/mgmwood.com/ssbkazatwpdue5jj0pyc.jpg"
 ---
 
 TESTING123
