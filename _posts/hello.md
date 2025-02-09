@@ -1,13 +1,13 @@
 ---
-title: "Learn How to Pre-render Pages Using Static Generation with Next.js"
-excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
-coverImage: "/assets/blog/hello-world/cover.jpg"
-date: "2020-03-16T05:35:07.322Z"
+title: "Hello World"
+excerpt: "Every developers first blog post"
+coverImage: "https://res.cloudinary.com/dpfptjeqd/image/upload/v1739101428/mgmwood.com/Screenshot_2025-02-09_at_11.43.38_xs95p8.png"
+date: "2025-02-09T11:49:23.322Z"
 author:
-  name: Tim Neutkens
-  picture: "/assets/blog/authors/tim.jpeg"
+  name: Michael Wood
+  picture: "/HERO2.png"
 ogImage:
-  url: "/assets/blog/hello-world/cover.jpg"
+  url: "https://res.cloudinary.com/dpfptjeqd/image/upload/v1739101428/mgmwood.com/Screenshot_2025-02-09_at_11.43.38_xs95p8.png"
 ---
 
-Hello World
+Hello World! My Name is Michael Wood I am a 24 year old software developer living in Manchester.
