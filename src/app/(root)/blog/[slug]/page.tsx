@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Head from "next/head";
 import { notFound } from "next/navigation";
 
 import Container from "@/components/blog-components/container";
@@ -22,7 +23,6 @@ export default async function Post(props: Params) {
   return (
     <main>
       <Container>
-        <Header />
         <article className="mb-32">
           <PostHeader
             title={post.title}

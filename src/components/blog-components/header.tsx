@@ -2,9 +2,14 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <Link href="/blog" className="my-4 flex cursor-pointer hover:underline">
-      <h2 className="text-xl text-honblue">Back to all posts</h2>
-    </Link>
+    <h2 className="text-honblue">
+      <Link
+        href="/blog"
+        className="my-4 mt-8 flex cursor-pointer items-center text-xl font-thin italic leading-tight tracking-tight hover:underline md:tracking-tighter"
+      >
+        Back to all posts
+      </Link>
+    </h2>
   );
 };
 
