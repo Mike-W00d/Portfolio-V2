@@ -1,7 +1,8 @@
 /* eslint-disable array-callback-return */
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { SignOutButton, useUser } from "@clerk/nextjs";
+import { ChevronLeft, ChevronRight, LogIn, LogOut } from "lucide-react";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 
@@ -16,6 +17,7 @@ import { cn } from "@/lib/utils";
 
 export default function SideNav() {
   const navItems = NavItems();
+  const { isSignedIn } = useUser();
 
   // Set initial state without relying on window/localStorage
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
@@ -101,6 +103,29 @@ export default function SideNav() {
                 );
               }
             })}
+          </div>
+          <div className="mb-3">
+            {isSignedIn ? (
+              <SignOutButton>
+                <button>
+                  <SideNavItem
+                    label={"Sign Out"}
+                    icon={<LogOut size={20} />}
+                    path={"/"}
+                    active={false}
+                    isSidebarExpanded={isSidebarExpanded}
+                  />
+                </button>
+              </SignOutButton>
+            ) : (
+              <SideNavItem
+                label={"Sign In"}
+                icon={<LogIn size={20} />}
+                path={"/sign-in"}
+                active={false}
+                isSidebarExpanded={isSidebarExpanded}
+              />
+            )}
           </div>
         </aside>
         <div className="relative mt-[calc(calc(60vh)-10px)]">
