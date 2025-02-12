@@ -1,5 +1,3 @@
-import { CMS_NAME } from "@/lib/constants";
-
 export function Intro() {
   return (
     <section className="my-16 flex flex-col items-center md:mb-12 md:flex-row md:justify-between">

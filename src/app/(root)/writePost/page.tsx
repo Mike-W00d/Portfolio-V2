@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BlogForm } from "@/components/blogForm";
+import BlogForm from "@/components/blogForm";
 
 const writePost = () => {
   return (
