@@ -12,7 +12,7 @@ type Props = {
   date: string;
   excerpt: string;
   author: Author;
-  slug: string;
+  slug: string | undefined;
 };
 
 export function PostPreview({

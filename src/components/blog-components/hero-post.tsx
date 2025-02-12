@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Avatar from "@/components/blog-components/avatar";
 import CoverImage from "@/components/blog-components/cover-image";
-import { type Author } from "@/lib/models/author";
+import { type IAuthor } from "@/lib/models/author";
 
 import DateFormatter from "./date-formatter";
 
@@ -11,7 +11,7 @@ type Props = {
   coverImage: string;
   date: string;
   excerpt: string;
-  author: Author;
+  author: IAuthor;
   slug: string;
 };
 

@@ -1,9 +1,9 @@
-import { Post } from "@/lib/models/posts";
+import { IPost } from "@/lib/models/posts";
 
 import { PostPreview } from "./post-preview";
 
 type Props = {
-  posts: Post[];
+  posts: IPost[];
 };
 
 export function MoreStories({ posts }: Props) {

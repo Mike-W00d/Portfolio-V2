@@ -1,14 +1,24 @@
 "use client";
 
+import { useUser } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
-import { NavItems } from "@/config";
+import { SignedInNavItems, SignedOutNavItems } from "@/config";
 
 export default function Header() {
-  const navItems = NavItems();
+  const { isSignedIn } = useUser();
+
+  const navItems = [];
+
+  if (!isSignedIn) {
+    navItems.push(...SignedOutNavItems());
+  } else {
+    navItems.push(...SignedInNavItems());
+  }
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
