@@ -10,6 +10,7 @@ import Header from "@/app/(sections)/header";
 import SideNav from "@/components/side-nav";
 import { cn } from "@/lib/utils";
 
+import WelcomeMessage from "./(sections)/WelcomeMessage";
 import GoogleCaptchaWrapper from "./providers/GoogleCaptchaWrapper";
 import Providers from "./providers/Toast";
 
@@ -65,6 +66,7 @@ export default function RootLayout({
                 <div className="relative mx-auto flex h-[calc(100vh-64px)] w-full justify-center overflow-y-auto">
                   <div className="w-full md:max-w-6xl">
                     <Providers>
+                      <WelcomeMessage />
                       {children}
                       <Analytics />
                       <SpeedInsights />
