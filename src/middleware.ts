@@ -1,6 +1,9 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-const isRestrictedRoute = createRouteMatcher(["/writePost(.*)"]);
+const isRestrictedRoute = createRouteMatcher([
+  "/writePost(.*)",
+  "/imageUpload(.*)",
+]);
 
 export default clerkMiddleware(async (auth, request) => {
   if (isRestrictedRoute(request)) {
