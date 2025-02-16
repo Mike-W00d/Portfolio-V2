@@ -7,9 +7,6 @@ export interface IPost extends Document {
   coverImage: string;
   author: Types.ObjectId;
   excerpt: string;
-  ogImage: {
-    url: string;
-  };
   content: string;
   preview?: boolean;
 }
@@ -21,9 +18,6 @@ const PostSchema = new Schema<IPost>(
     coverImage: { type: String, required: true },
     author: { type: Schema.Types.ObjectId, ref: "Author" },
     excerpt: { type: String, required: true },
-    ogImage: {
-      url: { type: String, required: true },
-    },
     content: { type: String, required: true },
     preview: { type: Boolean, default: false },
   },

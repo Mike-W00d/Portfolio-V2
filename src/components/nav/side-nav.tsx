@@ -169,7 +169,7 @@ export const SideNavItem: React.FC<{
       {isSidebarExpanded ? (
         <Link
           href={path}
-          className={`relative flex h-full items-center whitespace-nowrap rounded-md ${
+          className={`relative flex h-[35px] items-center whitespace-nowrap rounded-md ${
             active
               ? "bg-white text-sm text-black shadow-sm"
               : "text-white hover:bg-white hover:text-black"
@@ -186,7 +186,7 @@ export const SideNavItem: React.FC<{
             <TooltipTrigger>
               <Link
                 href={path}
-                className={`relative flex h-full items-center whitespace-nowrap rounded-md ${
+                className={`relative flex h-[35px] items-center whitespace-nowrap rounded-md ${
                   active
                     ? "bg-white text-sm text-black"
                     : "text-white hover:bg-white hover:text-black"

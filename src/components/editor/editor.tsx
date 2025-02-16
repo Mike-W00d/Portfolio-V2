@@ -28,31 +28,27 @@ import {
   codeMirrorPlugin,
   diffSourcePlugin,
 } from "@mdxeditor/editor";
-import { basicDark } from "cm6-theme-basic-dark";
-import { useTheme } from "next-themes";
-import type { ForwardedRef } from "react";
 
 import "@mdxeditor/editor/style.css";
-import "./dark-editor.css";
+
+import type { ForwardedRef } from "react";
 
 interface Props {
   value: string;
   fieldChange: (value: string) => void;
-  editorRef: ForwardedRef<MDXEditorMethods> | null;
+  editorRef?: ForwardedRef<MDXEditorMethods | null>;
 }
-
+/**
+ * Extend this Component further with the necessary plugins or props you need.
+ * proxying the ref is necessary. Next.js dynamically imported components don't support refs.
+ */
 const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
-  const { resolvedTheme } = useTheme();
-
-  const theme = resolvedTheme === "dark" ? [basicDark] : [];
-
   return (
     <MDXEditor
-      key={resolvedTheme}
-      markdown={value}
-      ref={editorRef}
-      className=""
       onChange={fieldChange}
+      ref={editorRef}
+      markdown={value}
+      className="w-full grid"
       plugins={[
         headingsPlugin(),
         listsPlugin(),
@@ -81,7 +77,6 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
             jsx: "JavaScript (React)",
           },
           autoLoadLanguageSupport: true,
-          codeMirrorExtensions: theme,
         }),
         diffSourcePlugin({ viewMode: "rich-text", diffMarkdown: "" }),
         toolbarPlugin({
