@@ -4,8 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { MDXEditorMethods } from "@mdxeditor/editor";
 import axios from "axios";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -35,12 +37,15 @@ export function BlogForm() {
       content: "",
     },
   });
+  const router = useRouter();
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof PostSchema>) {
     try {
       const res = await axios.post("/api/posts", values);
-      console.log(res);
+      const { data } = res;
+      toast.success("Post created successfully");
+      router.push(`/blog/${data.data._id}`);
     } catch (error) {
       console.error("Error submitting form", error);
     }
@@ -48,7 +53,7 @@ export function BlogForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-1/2 space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
         <FormField
           control={form.control}
           name="title"
@@ -95,7 +100,7 @@ export function BlogForm() {
           control={form.control}
           name="content"
           render={({ field }) => (
-            <FormItem className="flex w-full flex-col">
+            <FormItem className="flex w-full flex-col border border-gray-400">
               <FormLabel className="text-black">Write you Post</FormLabel>
               <FormControl>
                 <Editor
