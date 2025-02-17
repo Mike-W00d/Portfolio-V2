@@ -5,6 +5,9 @@ import { title } from "process";
 
 import Image from "next/image";
 
+import { Preview } from "@/components/editor/Preview";
+import Avatar from "@/components/blog-components/avatar";
+
 // import Container from "@/components/blog-components/container";
 // import { getAllPosts, getPostBySlug } from "@/lib/api";
 // import { CMS_NAME } from "@/lib/constants";
@@ -88,16 +91,39 @@ export default async function Page({
 
   const data = await fetchPost(id);
 
-  const { title, content, coverImage, excerpt, date, author } = data.data;
+  const { title, content, coverImage, date } = data.data;
+
+  const formattedDate = new Date(date).toLocaleDateString();
 
   return (
     <main>
-      <h1> {title} </h1>
-      <Image src={coverImage} alt={title} width={200} height={200} />
-      <p> {excerpt} </p>
-      <p> {date} </p>
-      <p> {author} </p>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <div className="flex flex-col items-center px-10">
+        <Image
+          src={coverImage}
+          alt={title}
+          width={0}
+          height={0}
+          sizes="(max-width: 800px) 100vw, 800px"
+          style={{
+            width: "auto",
+            height: "auto",
+            maxWidth: "100%",
+            maxHeight: "500px",
+          }}
+          className="mt-4"
+        />
+        <div className="w-full flex items-center mt-4 justify-between">
+          <h1 className="text-4xl text-fedblue font-bold"> {title} </h1>
+          <div>
+            <Avatar name="Michael Wood" picture="/HERO2.png" />
+            <p className="flex justify-end text-honblue text-lg">
+              {" "}
+              {formattedDate}{" "}
+            </p>
+          </div>
+        </div>
+        <Preview content={content} />
+      </div>
     </main>
   );
 }
