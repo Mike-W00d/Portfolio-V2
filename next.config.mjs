@@ -8,6 +8,10 @@ const nextConfig = {
       },
     ],
   },
+<<<<<<< HEAD
+=======
+  transpilePackages: ["next-mdx-remote"],
+>>>>>>> 89dbdea (Added Markdown complier and also styled the induvidual post page)
 };
 
 export default nextConfig;
