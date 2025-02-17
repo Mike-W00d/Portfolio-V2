@@ -1,5 +1,6 @@
 "use client";
 
+// eslint-disable-next-line import/order
 import {
   headingsPlugin,
   listsPlugin,
@@ -48,7 +49,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
       onChange={fieldChange}
       ref={editorRef}
       markdown={value}
-      className="w-full grid"
+      className="grid w-full"
       plugins={[
         headingsPlugin(),
         listsPlugin(),
