@@ -9,10 +9,6 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const author = { name: "Michael Wood", picture: "/HERO2.png" };
-
-    body.author = author;
-
     const validatedData = PostSchema.parse(body);
 
     await connectToDB();
