@@ -49,7 +49,7 @@ const Editor = ({ value, editorRef, fieldChange, ...props }: Props) => {
       onChange={fieldChange}
       ref={editorRef}
       markdown={value}
-      className="grid w-full"
+      className="editor grid w-full"
       plugins={[
         headingsPlugin(),
         listsPlugin(),
