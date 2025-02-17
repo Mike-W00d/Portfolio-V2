@@ -5,7 +5,7 @@ export interface IPost extends Document {
   title: string;
   date: string;
   coverImage: string;
-  author: Types.ObjectId;
+  author: { type: Types.ObjectId; ref: "Author" };
   excerpt: string;
   content: string;
   preview?: boolean;

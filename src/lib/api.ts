@@ -3,7 +3,7 @@ import { join } from "path";
 
 import matter from "gray-matter";
 
-import { Post } from "@/lib/models/posts";
+import { IPostDoc as Post } from "@/lib/models/posts";
 
 const postsDirectory = join(process.cwd(), "_posts");
 

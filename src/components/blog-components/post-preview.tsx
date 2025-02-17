@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { type Author } from "@/lib/models/author";
+import { type IAuthorDoc as Author } from "@/lib/models/author";
 
 import Avatar from "./avatar";
 import CoverImage from "./cover-image";

@@ -1,12 +1,6 @@
-import axios from "axios";
 import { Metadata } from "next";
 
-import Container from "@/components/blog-components/container";
-import { HeroPost } from "@/components/blog-components/hero-post";
-import { Intro } from "@/components/blog-components/intro";
-import { MoreStories } from "@/components/blog-components/more-stories";
-import { getAllPosts } from "@/lib/api";
-import posts, { Post } from "@/lib/models/posts";
+import { IPost } from "@/lib/models/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -14,7 +8,7 @@ export const metadata: Metadata = {
 
 export default async function Index() {
   // Fetch posts with caching for optimization
-  const fetchPosts = async (): Promise<Post[]> => {
+  const fetchPosts = async (): Promise<IPost[]> => {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts`,

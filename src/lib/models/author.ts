@@ -14,6 +14,4 @@ const AuthorSchema = new Schema<IAuthor>(
   { timestamps: true },
 );
 
-const Author = models?.Author || model<IAuthor>("Author", AuthorSchema);
-
-export default Author;
+export const Author = models?.Author || model<IAuthor>("Author", AuthorSchema);
