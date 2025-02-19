@@ -1,11 +1,6 @@
 import { Code } from "bright";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
-Code.theme = {
-  light: "github-light",
-  lightSelector: "html.light",
-};
-
 export const Preview = ({ content }: { content: string }) => {
   const formattedContent = content.replace(/\\/g, "").replace(/&#x20;/g, "");
 
