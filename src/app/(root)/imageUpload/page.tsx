@@ -1,16 +1,19 @@
 "use client";
 
-import { CldUploadWidget } from "next-cloudinary";
-import React from "react";
+import { CldUploadButton } from "next-cloudinary";
+import React, { useState } from "react";
 
 const page = () => {
+  const [resource, setResource] = useState();
   return (
-    <div>
-      <CldUploadWidget uploadPreset="<Your Upload Preset>">
-        {({ open }) => {
-          return <button onClick={() => open()}>Upload an Image</button>;
-        }}
-      </CldUploadWidget>
+    <div className="flex justify-center">
+      <div className="flex flex-col justify-center">
+        <h1 className="text-3xl font-bold text-fedblue">
+          {" "}
+          Upload Cover Image for blog here
+        </h1>
+        <CldUploadButton uploadPreset="Blog-Upload" />
+      </div>
     </div>
   );
 };

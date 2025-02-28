@@ -4,6 +4,8 @@ import { Preview } from "@/components/editor/Preview";
 import Avatar from "@/components/blog-components/avatar";
 import Link from "next/link";
 
+import moment from "moment";
+
 export default async function Page({
   params,
 }: {
@@ -20,13 +22,16 @@ export default async function Page({
     return response.json();
   };
 
+  function formatDateString(dateString: string) {
+    return moment(dateString).format("MMMM Do YYYY");
+  }
   const data = await fetchPost(id);
 
   const { title, content, coverImage, date } = data.data;
 
-  const formattedDate = new Date(date).toLocaleDateString();
-
   console.log("content", content);
+
+  const formattedDate = formatDateString(date);
 
   return (
     <main>
@@ -49,8 +54,7 @@ export default async function Page({
           <div>
             <Avatar name="Michael Wood" picture="/HERO2.png" />
             <p className="flex justify-end text-honblue text-lg">
-              {" "}
-              {formattedDate}{" "}
+              {formattedDate}
             </p>
           </div>
         </div>
