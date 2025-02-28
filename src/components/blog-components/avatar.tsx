@@ -15,7 +15,7 @@ const Avatar = ({ name, picture }: Props) => {
         height={30}
         width={30}
       />
-      <div className="text-xl font-bold text-fedblue">{name}</div>
+      <h1 className="text-xl font-bold text-fedblue">{name}</h1>
     </div>
   );
 };
