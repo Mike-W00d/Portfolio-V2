@@ -27,7 +27,7 @@ const PostContainer = ({
   const formattedDate = formatDateString(date);
   return (
     <div className="mx-4 my-8 flex flex-col items-center justify-center rounded-md bg-white shadow-xl">
-      <Link href={`/blog/${id}`}>
+      <Link href={`/blog/post/${id}`}>
         <div className="relative flex max-h-[400px] min-h-[200px]  w-full justify-center px-4">
           <CldImage
             src={coverImage}

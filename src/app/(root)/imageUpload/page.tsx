@@ -1,10 +1,8 @@
 "use client";
 
 import { CldUploadButton } from "next-cloudinary";
-import React, { useState } from "react";
 
 const page = () => {
-  const [resource, setResource] = useState();
   return (
     <div className="flex justify-center">
       <div className="flex flex-col justify-center">

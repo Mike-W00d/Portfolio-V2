@@ -1,10 +1,41 @@
+import moment from "moment";
+import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
-
-import { Preview } from "@/components/editor/Preview";
-import Avatar from "@/components/blog-components/avatar";
 import Link from "next/link";
 
-import moment from "moment";
+import Avatar from "@/components/blog-components/avatar";
+import { Preview } from "@/components/editor/Preview";
+
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+  const { id } = await params;
+
+  // fetch data
+  const post = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${id}`,
+  ).then((res) => res.json());
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  const { title, excerpt, coverImage } = post.data;
+
+  return {
+    title: `${title} | Blog`,
+    description: `${excerpt}`,
+    openGraph: {
+      images: [`${coverImage}`, ...previousImages],
+    },
+  };
+}
 
 export default async function Page({
   params,
@@ -29,14 +60,12 @@ export default async function Page({
 
   const { title, content, coverImage, date } = data.data;
 
-  console.log("content", content);
-
   const formattedDate = formatDateString(date);
 
   return (
     <main>
       <div className="flex flex-col items-center px-10">
-        <div className="w-full h-1/2 relative flex justify-center">
+        <div className="relative flex h-1/2 w-full justify-center">
           <Image
             src={coverImage}
             alt={title}
@@ -46,14 +75,14 @@ export default async function Page({
             className="mt-4"
           />
         </div>
-        <div className="w-full flex items-center mt-4 justify-between">
-          <h1 className="text-xl text-honblue hover:underline cursor-pointer">
+        <div className="mt-4 flex w-full items-center justify-between">
+          <h1 className="cursor-pointer text-xl text-honblue hover:underline">
             <Link href="/blog">Back To All Posts</Link>
           </h1>
-          <h1 className="text-4xl text-fedblue font-bold"> {title} </h1>
+          <h1 className="text-4xl font-bold text-fedblue"> {title} </h1>
           <div>
             <Avatar name="Michael Wood" picture="/HERO2.png" />
-            <p className="flex justify-end text-honblue text-lg">
+            <p className="flex justify-end text-lg text-honblue">
               {formattedDate}
             </p>
           </div>

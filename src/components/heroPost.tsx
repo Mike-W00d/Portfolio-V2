@@ -29,14 +29,9 @@ const HeroPost = ({
   return (
     <div className="flex max-h-[386px] w-full flex-col">
       <div className="flex justify-between space-x-2">
-        <div className="relative w-1/2">
-          <Link className="w-full cursor-pointer" href={`/blog/${id}`}>
-            <Image
-              src={coverImage}
-              alt={title}
-              fill
-              sizes="(max-width: 556px) 100vw"
-            />
+        <div className="relative flex w-1/2 items-center justify-center">
+          <Link className="w-full cursor-pointer" href={`/blog/post/${id}`}>
+            <Image src={coverImage} alt={title} width={640} height={360} />
           </Link>
         </div>
         <div className="max-h-[386px] w-1/2 text-right">
@@ -60,7 +55,6 @@ const HeroPost = ({
             </div>
           </div>
         </div>
-        å
       </div>
     </div>
   );
