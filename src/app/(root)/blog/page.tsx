@@ -19,8 +19,7 @@ interface postProps {
 }
 
 export default async function Index() {
-  // Fetch posts with caching for optimization
-  const fetchPosts = async () => {
+  const fetchPosts = async (): Promise<{ data: postProps[] }> => {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts`,
@@ -31,7 +30,7 @@ export default async function Index() {
       return res.json();
     } catch (error) {
       console.error("Error fetching posts:", error);
-      return []; // Return empty array on failure
+      return { data: [] };
     }
   };
 
@@ -39,7 +38,7 @@ export default async function Index() {
 
   const posts = data.data;
 
-  const heroPost = posts.pop();
+  const heroPost = posts[0];
 
   return (
     <div className="flex w-full flex-col">
@@ -66,7 +65,7 @@ export default async function Index() {
       </div>
       <div>
         <h1 className="text-3xl font-bold text-fedblue max-lg:hidden">
-          More Blog Posts
+          All Blog Posts
         </h1>
         <h1 className="text-3xl font-bold text-fedblue lg:hidden">All Posts</h1>
       </div>
