@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 interface postProps {
-  _id: string;
+  id: string;
   title: string;
   coverImage: string;
   excerpt: string;
@@ -55,7 +55,7 @@ export default async function Index() {
           Featured Post{" "}
         </h2>
         <HeroPost
-          id={heroPost._id}
+          id={heroPost.id}
           title={heroPost.title}
           coverImage={heroPost.coverImage}
           excerpt={heroPost.excerpt}
@@ -72,8 +72,8 @@ export default async function Index() {
       <div className="grid grid-cols-2 max-[900px]:grid-cols-1">
         {posts.map((post: postProps) => (
           <PostContainer
-            key={post._id}
-            id={post._id}
+            key={post.id}
+            id={post.id}
             title={post.title}
             coverImage={post.coverImage}
             excerpt={post.excerpt}
