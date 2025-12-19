@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://mgmwood.com"),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

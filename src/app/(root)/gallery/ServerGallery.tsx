@@ -1,3 +1,6 @@
+import React from "react";
+
+import "react-photo-album/rows.css";
 import connectToDB from "@/lib/dbConnect";
 import Photo from "@/lib/models/photoSchema";
 
@@ -11,6 +14,7 @@ interface PhotoType {
   _id: string;
 }
 
+// Server component to fetch photos
 async function getPhotos(): Promise<PhotoType[]> {
   await connectToDB();
 

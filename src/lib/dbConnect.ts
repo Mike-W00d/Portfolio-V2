@@ -1,17 +1,29 @@
 import mongoose from "mongoose";
 
-const connection: { isConnected?: number } = {};
-
 async function connectToDB() {
-  if (connection.isConnected) {
-    console.log("MongoDB is already connected");
+  if (mongoose.connection.readyState === 1) {
+    console.log("MongoDB: Using existing connection");
     return;
   }
 
-  const db = await mongoose.connect(process.env.MONGODB_URI!);
+  if (mongoose.connection.readyState === 2) {
+    console.log("MongoDB: Connection in progress, waiting...");
+    await new Promise((resolve) => {
+      mongoose.connection.once("connected", resolve);
+    });
+    return;
+  }
 
-  connection.isConnected = db.connections[0].readyState;
-  console.log("MongoDB connected");
+  try {
+    console.log("MongoDB: Attempting to connect...");
+    await mongoose.connect(process.env.MONGODB_URI!, {
+      bufferCommands: false,
+    });
+    console.log("MongoDB: Connected successfully");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    throw error;
+  }
 }
 
 export default connectToDB;

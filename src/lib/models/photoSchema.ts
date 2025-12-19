@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface IPhoto extends Document {
   src: string;
@@ -7,23 +7,32 @@ export interface IPhoto extends Document {
   width: number;
 }
 
-const photoSchema = new Schema({
-  src: {
-    type: String,
-    required: true,
+const photoSchema = new Schema(
+  {
+    src: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    height: {
+      type: Number,
+    },
+    width: {
+      type: Number,
+    },
   },
-  description: {
-    type: String,
-    required: true,
+  {
+    timestamps: true, // Adds createdAt and updatedAt
   },
-  height: {
-    type: Number,
-  },
-  width: {
-    type: Number,
-  },
-});
+);
 
-const Photo = mongoose.models.Photo || mongoose.model<IPhoto>('Photo', photoSchema);
+// Add indexes for better query performance
+photoSchema.index({ createdAt: -1 }); // For sorting by newest first if needed
+
+const Photo =
+  mongoose.models.Photo || mongoose.model<IPhoto>("Photo", photoSchema);
 
 export default Photo;
