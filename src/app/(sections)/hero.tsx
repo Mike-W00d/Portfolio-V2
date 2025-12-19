@@ -15,9 +15,6 @@ const Hero = () => {
         {/* Text box */}
         <div className="w-full rounded-lg bg-white p-6 text-center shadow-xl lg:w-auto lg:text-left">
           <span className="font-bold">
-            {/* <h1 className="text-xl text-honblue px-3"> Hello, I'm</h1> */}
-            {/* <h2 className="text-4xl font-extrabold text-fedblue px-3">
-              Michael Wood</h2> */}
             <ReactTyped
               className="px-3 text-xl text-honblue"
               strings={["Hello, I'm"]}
@@ -35,8 +32,10 @@ const Hero = () => {
             />
 
             <h3 className="px-3 text-xl text-honblue">
-              I am a Full Stack Developer specializing in Node.js, Tailwind CSS,
-              TypeScript, Next.js and MongoDB.
+              I am a Full Stack Software Engineer at StuRents where I build Rest
+              APIs, user interfaces and solve problems using tech such as
+              Node.js, React.js, Next.js, AWS Lambda, MySQL and PHP amongst
+              others.
             </h3>
           </span>
         </div>
