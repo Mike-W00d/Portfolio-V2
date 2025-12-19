@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 import connectToDB from "@/lib/dbConnect";
 import Photo from "@/lib/models/photoSchema";
 
@@ -11,14 +13,22 @@ interface PhotoType {
   _id: string;
 }
 
+interface PhotoDocument {
+  _id: Types.ObjectId;
+  src: string;
+  description: string;
+  height: number;
+  width: number;
+}
+
 async function getPhotos(): Promise<PhotoType[]> {
   await connectToDB();
 
   try {
-    const photos = await Photo.find({})
+    const photos = (await Photo.find({})
       .select("src description height width")
       .lean()
-      .exec();
+      .exec()) as unknown as PhotoDocument[];
 
     return photos.map((photo) => ({
       src: photo.src,
