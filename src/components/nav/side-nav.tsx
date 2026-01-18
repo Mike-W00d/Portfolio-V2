@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 "use client";
 
 import { useUser } from "@clerk/nextjs";
@@ -28,12 +27,10 @@ export default function SideNav() {
     navItems.push(...SignedInNavItems());
   }
 
-  // Set initial state without relying on window/localStorage
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Delay logic until the component is mounted
     setIsMounted(true);
 
     if (typeof window !== "undefined") {

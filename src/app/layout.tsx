@@ -8,10 +8,10 @@ import React from "react";
 
 import "./globals.css";
 import Header from "@/app/(sections)/header";
-import SideNav from "@/components/side-nav";
+import SideNav from "@/components/nav/side-nav";
 import { cn } from "@/lib/utils";
+import WelcomeMessage from "@/app/(sections)/welcomeMessage";
 
-import WelcomeMessage from "./(sections)/WelcomeMessage";
 import GoogleCaptchaWrapper from "./providers/GoogleCaptchaWrapper";
 import Providers from "./providers/Toast";
 
