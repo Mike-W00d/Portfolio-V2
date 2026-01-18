@@ -1,6 +1,7 @@
 /* eslint-disable array-callback-return */
 "use client";
 
+import { useUser } from "@clerk/nextjs";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
@@ -11,11 +12,21 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { NavItems } from "@/config";
+import { SignedInNavItems, SignedOutNavItems } from "@/config";
 import { cn } from "@/lib/utils";
 
+import { SignOut } from "./signOut";
+
 export default function SideNav() {
-  const navItems = NavItems();
+  const { isSignedIn } = useUser();
+
+  const navItems = [];
+
+  if (!isSignedIn) {
+    navItems.push(...SignedOutNavItems());
+  } else {
+    navItems.push(...SignedInNavItems());
+  }
 
   // Set initial state without relying on window/localStorage
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
@@ -101,7 +112,31 @@ export default function SideNav() {
                 );
               }
             })}
+            {isSignedIn ? <SignOut /> : null}
           </div>
+          {/* <div className="mb-3">
+            {isSignedIn ? (
+              <SignOutButton>
+                <button>
+                  <SideNavItem
+                    label={"Sign Out"}
+                    icon={<LogOut size={20} />}
+                    path={"/"}
+                    active={false}
+                    isSidebarExpanded={isSidebarExpanded}
+                  />
+                </button>
+              </SignOutButton>
+            ) : (
+              <SideNavItem
+                label={"Sign In"}
+                icon={<LogIn size={20} />}
+                path={"/sign-in"}
+                active={false}
+                isSidebarExpanded={isSidebarExpanded}
+              />
+            )}
+          </div> */}
         </aside>
         <div className="relative mt-[calc(calc(60vh)-10px)]">
           <button
@@ -127,13 +162,14 @@ export const SideNavItem: React.FC<{
   path: string;
   active: boolean;
   isSidebarExpanded: boolean;
-}> = ({ label, icon, path, active, isSidebarExpanded }) => {
+  logOut?: boolean;
+}> = ({ label, icon, path, active, isSidebarExpanded, logOut }) => {
   return (
     <>
       {isSidebarExpanded ? (
         <Link
           href={path}
-          className={`relative flex h-full items-center whitespace-nowrap rounded-md ${
+          className={`relative flex h-[35px] items-center whitespace-nowrap rounded-md ${
             active
               ? "bg-white text-sm text-black shadow-sm"
               : "text-white hover:bg-white hover:text-black"
@@ -150,7 +186,7 @@ export const SideNavItem: React.FC<{
             <TooltipTrigger>
               <Link
                 href={path}
-                className={`relative flex h-full items-center whitespace-nowrap rounded-md ${
+                className={`relative flex h-[35px] items-center whitespace-nowrap rounded-md ${
                   active
                     ? "bg-white text-sm text-black"
                     : "text-white hover:bg-white hover:text-black"

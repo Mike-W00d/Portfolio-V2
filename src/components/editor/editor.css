@@ -1,0 +1,5 @@
+@import "../node_modules/@mdxeditor/editor/dist/style.css";
+
+.editor {
+  border-color: black;
+}
