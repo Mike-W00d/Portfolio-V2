@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Avatar from "@/components/blog-components/avatar";
-import { Preview } from "@/components/editor/Preview";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -87,7 +86,6 @@ export default async function Page({
             </p>
           </div>
         </div>
-        <Preview content={content} />
       </div>
     </main>
   );

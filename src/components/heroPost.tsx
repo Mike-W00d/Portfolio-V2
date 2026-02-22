@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 
 import Avatar from "./blog-components/avatar";
-import { Preview } from "./editor/Preview";
 
 interface PostContainerProps {
   id: string;
@@ -39,9 +38,7 @@ const HeroPost = ({
             {title}
           </h1>
           <h2 className="font-bold text-honblue"> </h2>
-          <div className="h-[250px] overflow-hidden">
-            <Preview content={content} />
-          </div>
+          <div className="h-[250px] overflow-hidden"></div>
           <div className="flex items-center justify-between object-bottom">
             <Avatar name="Michael Wood" picture="/HERO2.png" />
             <div className="flex flex-col items-end">
