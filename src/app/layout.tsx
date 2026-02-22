@@ -11,7 +11,7 @@ import Header from "@/app/(sections)/header";
 import SideNav from "@/components/nav/side-nav";
 import { cn } from "@/lib/utils";
 
-import WelcomeMessage from "./(sections)/WelcomeMessage";
+import WelcomeMessage from "./(sections)/welcomeMessage";
 import GoogleCaptchaWrapper from "./providers/GoogleCaptchaWrapper";
 import Providers from "./providers/Toast";
 
@@ -71,6 +71,7 @@ export default async function RootLayout({
                         {children}
                         <Analytics />
                         <SpeedInsights />
+                        <WelcomeMessage />
                       </Providers>
                     </div>
                   </div>
