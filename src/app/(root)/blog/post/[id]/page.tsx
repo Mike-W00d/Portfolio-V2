@@ -4,6 +4,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 import Avatar from "@/components/blog-components/avatar";
+import PostShare from "@/components/blog-components/postShare";
 import ViewCounter from "@/components/blog-components/viewCounter";
 import { PostActions } from "@/components/blog-components/postActions";
 import { PostContent, PostHero } from "@/components/blog-components/postDetail";
@@ -79,7 +80,10 @@ export default async function Page({
             </time>
             <ViewCounter postId={id} isLoggedIn={!!user} />
           </div>
-          {user && <PostActions postId={id} />}
+          <div className="flex items-center gap-3">
+            <PostShare postId={id} title={title} />
+            {user && <PostActions postId={id} />}
+          </div>
         </div>
 
         <div className="my-8 h-px bg-gradient-to-r from-transparent via-honblue/40 to-transparent" />
