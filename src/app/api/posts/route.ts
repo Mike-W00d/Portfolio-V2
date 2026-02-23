@@ -1,3 +1,4 @@
+import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 
@@ -7,6 +8,11 @@ import Post from "@/lib/models/posts";
 
 export async function POST(request: Request) {
   try {
+    const { userId } = await auth();
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
     const body = await request.json();
 
     const validatedData = PostSchema.parse(body);
@@ -33,7 +39,7 @@ export async function POST(request: Request) {
 export async function GET() {
   try {
     await connectToDB();
-    const posts = await Post.find();
+    const posts = await Post.find().sort({ date: -1 });
 
     return NextResponse.json({ success: true, data: posts });
   } catch (error) {

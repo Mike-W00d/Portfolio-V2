@@ -1,9 +1,11 @@
-import moment from "moment";
+import { currentUser } from "@clerk/nextjs/server";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import Avatar from "@/components/blog-components/avatar";
+import { PostActions } from "@/components/blog-components/postActions";
+import { PostContent, PostHero } from "@/components/blog-components/postDetail";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -14,15 +16,12 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  // read route params
   const { id } = await params;
 
-  // fetch data
   const post = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${id}`,
   ).then((res) => res.json());
 
-  // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
   const { title, excerpt, coverImage } = post.data;
@@ -42,50 +41,43 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const fetchPost = async (id: string) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${id}`,
-    );
-    if (!response.ok) {
-      throw new Error("Failed to fetch post");
-    }
-    return response.json();
-  };
+  const user = await currentUser();
 
-  function formatDateString(dateString: string) {
-    return moment(dateString).format("MMMM Do YYYY");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${id}`,
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch post");
   }
-  const data = await fetchPost(id);
+  const data = await response.json();
 
   const { title, content, coverImage, date } = data.data;
 
-  const formattedDate = formatDateString(date);
-
   return (
-    <main>
-      <div className="flex flex-col items-center px-10">
-        <div className="relative flex h-1/2 w-full justify-center">
-          <Image
-            src={coverImage}
-            alt={title}
-            width={600}
-            height={600}
-            objectFit="contain"
-            className="mt-4"
-          />
-        </div>
-        <div className="mt-4 flex w-full items-center justify-between">
-          <h1 className="cursor-pointer text-xl text-honblue hover:underline">
-            <Link href="/blog">Back To All Posts</Link>
-          </h1>
-          <h1 className="text-4xl font-bold text-fedblue"> {title} </h1>
-          <div>
+    <main className="px-4 py-8 md:px-8">
+      <div className="mx-auto max-w-4xl">
+        <Link
+          href="/blog"
+          className="mb-6 inline-flex items-center gap-1 text-sm font-medium text-honblue transition-colors hover:text-pacific"
+        >
+          <ArrowLeft className="size-4" />
+          Back to Blog
+        </Link>
+
+        <PostHero coverImage={coverImage} title={title} date={date} />
+
+        <div className="mt-6 flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <Avatar name="Michael Wood" picture="/HERO2.png" />
-            <p className="flex justify-end text-lg text-honblue">
-              {formattedDate}
-            </p>
+            <span className="text-sm text-honblue/70">·</span>
+            <time className="text-sm text-honblue/70">{new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</time>
           </div>
+          {user && <PostActions postId={id} />}
         </div>
+
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-honblue/40 to-transparent" />
+
+        <PostContent content={content} />
       </div>
     </main>
   );

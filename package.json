@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@clerk/nextjs": "^6.11.2",
     "@hookform/resolvers": "^3.10.0",
     "@iconify/react": "^5.0.2",
@@ -16,6 +17,7 @@
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-slot": "^1.1.2",
+    "@tailwindcss/typography": "^0.5.19",
     "@uiw/react-md-editor": "^4.0.11",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
