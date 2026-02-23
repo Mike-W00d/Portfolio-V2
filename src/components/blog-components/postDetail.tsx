@@ -6,6 +6,7 @@ import { ArrowUp } from "lucide-react";
 import moment from "moment";
 import { CldImage } from "next-cloudinary";
 import Markdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 
 import useScroll from "@/hooks/use-scroll";
 
@@ -73,7 +74,7 @@ export function PostContent({ content }: PostContentProps) {
   return (
     <div id="post-content-card" className="rounded-xl bg-white p-6 shadow-sm md:p-10">
       <article className="prose prose-lg max-w-none prose-headings:text-fedblue prose-a:text-honblue prose-strong:text-fedblue">
-        <Markdown>{content}</Markdown>
+        <Markdown rehypePlugins={[rehypeHighlight]}>{content}</Markdown>
       </article>
       {scrolled && (
         <>

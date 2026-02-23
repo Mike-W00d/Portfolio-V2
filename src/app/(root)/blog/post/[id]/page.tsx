@@ -4,6 +4,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 import Avatar from "@/components/blog-components/avatar";
+import ViewCounter from "@/components/blog-components/viewCounter";
 import { PostActions } from "@/components/blog-components/postActions";
 import { PostContent, PostHero } from "@/components/blog-components/postDetail";
 
@@ -69,8 +70,14 @@ export default async function Page({
         <div className="mt-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Avatar name="Michael Wood" picture="/HERO2.png" />
-            <span className="text-sm text-honblue/70">·</span>
-            <time className="text-sm text-honblue/70">{new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</time>
+            <time className="text-sm font-bold text-fedblue">
+              {new Date(date).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </time>
+            <ViewCounter postId={id} isLoggedIn={!!user} />
           </div>
           {user && <PostActions postId={id} />}
         </div>
