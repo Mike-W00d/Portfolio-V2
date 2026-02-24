@@ -20,9 +20,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { id } = await params;
 
-  const post = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${id}`,
-  ).then((res) => res.json());
+  const post = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`).then(
+    (res) => res.json(),
+  );
 
   const previousImages = (await parent).openGraph?.images || [];
 
@@ -45,9 +45,7 @@ export default async function Page({
   const { id } = await params;
   const user = await currentUser();
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts/${id}`,
-  );
+  const response = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`);
   if (!response.ok) {
     throw new Error("Failed to fetch post");
   }

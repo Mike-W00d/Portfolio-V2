@@ -19,9 +19,7 @@ interface postProps {
 export default async function Index() {
   const fetchPosts = async (): Promise<{ data: postProps[] }> => {
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts`,
-      );
+      const res = await fetch(`${process.env.VERCEL_URL}/api/posts`);
 
       if (!res.ok) throw new Error("Failed to fetch posts");
 
