@@ -1,16 +1,17 @@
-import console from "console";
-
+import { Types } from "mongoose";
 import { Metadata } from "next";
 
 import HeroPost from "@/components/heroPost";
 import PostContainer from "@/components/postContainer";
+import connectToDB from "@/lib/dbConnect";
+import Post from "@/lib/models/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
 };
 
 interface postProps {
-  id: string;
+  _id: string;
   title: string;
   coverImage: string;
   excerpt: string;
@@ -18,69 +19,88 @@ interface postProps {
   content: string;
 }
 
+interface PostDocument {
+  _id: Types.ObjectId;
+  title: string;
+  coverImage: string;
+  excerpt: string;
+  date: string;
+  content: string;
+}
+
+async function getPosts(): Promise<postProps[]> {
+  await connectToDB();
+  try {
+    const posts = (await Post.find({})
+      .sort({ date: -1 })
+      .select("title coverImage excerpt date content")
+      .lean()
+      .exec()) as unknown as PostDocument[];
+
+    return posts.map((post) => ({
+      _id: post._id.toString(),
+      title: post.title,
+      coverImage: post.coverImage,
+      excerpt: post.excerpt,
+      date: post.date,
+      content: post.content,
+    }));
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
+
 export default async function Index() {
-  const fetchPosts = async (): Promise<{ data: postProps[] }> => {
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/posts`,
-      );
+  const posts = await getPosts();
 
-      if (!res.ok) throw new Error("Failed to fetch posts");
-
-      return res.json();
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-      return { data: [] };
-    }
-  };
-
-  const data = await fetchPosts();
-
-  const posts = data.data;
+  if (!posts || posts.length === 0) {
+    return (
+      <div className="flex w-full flex-col items-center justify-center py-20">
+        <h1 className="text-4xl font-bold text-fedblue">Blog</h1>
+        <p className="mt-4 text-lg text-honblue">
+          No posts yet. Check back soon!
+        </p>
+      </div>
+    );
+  }
 
   const heroPost = posts[0];
+  const remainingPosts = posts.slice(1);
 
   return (
     <div className="flex w-full flex-col">
-      <h1 className="my-4 text-4xl font-bold text-fedblue">
-        Welcome to my blog
-      </h1>
-      <span className="my-4 text-lg text-honblue">
-        Follow along for Code Snippets, podcast reviews and whatever else I feel
-        like posting.
-      </span>
-      <div className="my-4 flex w-full flex-col rounded-md bg-white p-4 shadow-lg max-lg:hidden">
-        <h2 className="mb-2 text-3xl font-bold text-fedblue">
-          {" "}
-          Featured Post{" "}
-        </h2>
-        <HeroPost
-          id={heroPost.id}
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          excerpt={heroPost.excerpt}
-          date={heroPost.date}
-          content={heroPost.content}
-        />
+      <div className="flex my-6 justify-center">
+        <h1 className="text-4xl font-bold text-fedblue">Sub Par Engineering</h1>
       </div>
-      <div>
-        <h1 className="text-3xl font-bold text-fedblue max-lg:hidden">
-          All Blog Posts
-        </h1>
-        <h1 className="text-3xl font-bold text-fedblue lg:hidden">All Posts</h1>
-      </div>
-      <div className="grid grid-cols-2 max-[900px]:grid-cols-1">
-        {posts.map((post: postProps) => (
-          <PostContainer
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            coverImage={post.coverImage}
-            excerpt={post.excerpt}
-            date={post.date}
-          />
-        ))}
-      </div>
+      <HeroPost
+        _id={heroPost._id}
+        title={heroPost.title}
+        coverImage={heroPost.coverImage}
+        excerpt={heroPost.excerpt}
+        date={heroPost.date}
+      />
+
+      {remainingPosts.length > 0 && (
+        <>
+          <div className="my-8 h-px bg-gradient-to-r from-transparent via-pacific to-transparent" />
+
+          <h2 className="mb-6 text-3xl font-bold text-fedblue">All Posts</h2>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {remainingPosts.map((post: postProps) => (
+              <PostContainer
+                key={post._id}
+                _id={post._id}
+                title={post.title}
+                coverImage={post.coverImage}
+                excerpt={post.excerpt}
+                date={post.date}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 const isRestrictedRoute = createRouteMatcher([
   "/writePost(.*)",
   "/imageUpload(.*)",
+  "/api/generate-excerpt(.*)",
 ]);
 
 export default clerkMiddleware(async (auth, request) => {

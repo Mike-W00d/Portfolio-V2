@@ -9,6 +9,7 @@ export interface IPost extends Document {
   excerpt: string;
   content: string;
   preview?: boolean;
+  viewCount: number;
 }
 
 export interface IPostDoc extends IPost, Document {}
@@ -20,6 +21,7 @@ const PostSchema = new Schema<IPost>(
     excerpt: { type: String, required: true },
     content: { type: String, required: true },
     preview: { type: Boolean, default: false },
+    viewCount: { type: Number, default: 0 },
   },
   // change timestamps to date and updated_at
   { timestamps: { createdAt: "date", updatedAt: "updated_at" } },
