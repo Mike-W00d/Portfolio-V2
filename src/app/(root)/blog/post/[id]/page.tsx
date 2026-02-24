@@ -4,6 +4,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 import Avatar from "@/components/blog-components/avatar";
+import { getBaseUrl } from "@/lib/utils";
 import PostShare from "@/components/blog-components/postShare";
 import ViewCounter from "@/components/blog-components/viewCounter";
 import { PostActions } from "@/components/blog-components/postActions";
@@ -20,7 +21,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { id } = await params;
 
-  const post = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`).then(
+  const post = await fetch(`${getBaseUrl()}/api/posts/${id}`).then(
     (res) => res.json(),
   );
 
@@ -45,7 +46,7 @@ export default async function Page({
   const { id } = await params;
   const user = await currentUser();
 
-  const response = await fetch(`${process.env.VERCEL_URL}/api/posts/${id}`);
+  const response = await fetch(`${getBaseUrl()}/api/posts/${id}`);
   if (!response.ok) {
     throw new Error("Failed to fetch post");
   }

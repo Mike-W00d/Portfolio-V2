@@ -9,7 +9,7 @@ interface PostShareProps {
 }
 
 export default function PostShare({ postId, title }: PostShareProps) {
-  const postUrl = `${process.env.VERCEL_URL}/blog/post/${postId}`;
+  const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${postId}`;
 
   const shareOnLinkedIn = () => {
     const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`;

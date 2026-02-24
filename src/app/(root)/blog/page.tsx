@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import HeroPost from "@/components/heroPost";
 import PostContainer from "@/components/postContainer";
+import { getBaseUrl } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -19,7 +20,7 @@ interface postProps {
 export default async function Index() {
   const fetchPosts = async (): Promise<{ data: postProps[] }> => {
     try {
-      const res = await fetch(`${process.env.VERCEL_URL}/api/posts`);
+      const res = await fetch(`${getBaseUrl()}/api/posts`);
 
       if (!res.ok) throw new Error("Failed to fetch posts");
 
