@@ -1,8 +1,10 @@
+import { Types } from "mongoose";
 import { Metadata } from "next";
 
 import HeroPost from "@/components/heroPost";
 import PostContainer from "@/components/postContainer";
-import { getBaseUrl } from "@/lib/utils";
+import connectToDB from "@/lib/dbConnect";
+import Post from "@/lib/models/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -17,22 +19,40 @@ interface postProps {
   content: string;
 }
 
+interface PostDocument {
+  _id: Types.ObjectId;
+  title: string;
+  coverImage: string;
+  excerpt: string;
+  date: string;
+  content: string;
+}
+
+async function getPosts(): Promise<postProps[]> {
+  await connectToDB();
+  try {
+    const posts = (await Post.find({})
+      .sort({ date: -1 })
+      .select("title coverImage excerpt date content")
+      .lean()
+      .exec()) as unknown as PostDocument[];
+
+    return posts.map((post) => ({
+      _id: post._id.toString(),
+      title: post.title,
+      coverImage: post.coverImage,
+      excerpt: post.excerpt,
+      date: post.date,
+      content: post.content,
+    }));
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+}
+
 export default async function Index() {
-  const fetchPosts = async (): Promise<{ data: postProps[] }> => {
-    try {
-      const res = await fetch(`${getBaseUrl()}/api/posts`);
-
-      if (!res.ok) throw new Error("Failed to fetch posts");
-
-      return res.json();
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-      return { data: [] };
-    }
-  };
-
-  const data = await fetchPosts();
-  const posts = data.data;
+  const posts = await getPosts();
 
   if (!posts || posts.length === 0) {
     return (

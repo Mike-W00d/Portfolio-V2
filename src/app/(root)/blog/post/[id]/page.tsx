@@ -1,19 +1,46 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { ArrowLeft } from "lucide-react";
+import { Types } from "mongoose";
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 import Avatar from "@/components/blog-components/avatar";
-import { getBaseUrl } from "@/lib/utils";
-import PostShare from "@/components/blog-components/postShare";
-import ViewCounter from "@/components/blog-components/viewCounter";
 import { PostActions } from "@/components/blog-components/postActions";
 import { PostContent, PostHero } from "@/components/blog-components/postDetail";
+import PostShare from "@/components/blog-components/postShare";
+import ViewCounter from "@/components/blog-components/viewCounter";
+import connectToDB from "@/lib/dbConnect";
+import Post from "@/lib/models/posts";
 
 type Props = {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
+
+interface PostDocument {
+  _id: Types.ObjectId;
+  title: string;
+  coverImage: string;
+  excerpt: string;
+  date: string;
+  content: string;
+}
+
+async function getPost(id: string) {
+  await connectToDB();
+  const post = (await Post.findById(id)
+    .lean()
+    .exec()) as unknown as PostDocument | null;
+  if (!post) throw new Error("Post not found");
+  return {
+    _id: post._id.toString(),
+    title: post.title,
+    coverImage: post.coverImage,
+    excerpt: post.excerpt,
+    date: post.date,
+    content: post.content,
+  };
+}
 
 export async function generateMetadata(
   { params }: Props,
@@ -21,13 +48,11 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { id } = await params;
 
-  const post = await fetch(`${getBaseUrl()}/api/posts/${id}`).then(
-    (res) => res.json(),
-  );
+  const post = await getPost(id);
 
   const previousImages = (await parent).openGraph?.images || [];
 
-  const { title, excerpt, coverImage } = post.data;
+  const { title, excerpt, coverImage } = post;
 
   return {
     title: `${title} | Blog`,
@@ -46,13 +71,7 @@ export default async function Page({
   const { id } = await params;
   const user = await currentUser();
 
-  const response = await fetch(`${getBaseUrl()}/api/posts/${id}`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch post");
-  }
-  const data = await response.json();
-
-  const { title, content, coverImage, date } = data.data;
+  const { title, content, coverImage, date } = await getPost(id);
 
   return (
     <main className="px-4 py-8 md:px-8">

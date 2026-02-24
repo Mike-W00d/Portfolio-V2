@@ -35,16 +35,3 @@ export async function POST(request: Request) {
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
-
-export async function GET() {
-  try {
-    await connectToDB();
-    const posts = await Post.find().sort({ date: -1 });
-
-    return NextResponse.json({ success: true, data: posts });
-  } catch (error) {
-    console.error("Error getting posts:", error);
-
-    return new NextResponse("Internal Server Error", { status: 500 });
-  }
-}
