@@ -70,15 +70,16 @@ export default async function Index() {
 
   return (
     <div className="flex w-full flex-col">
-      <div className="my-4">
-        <HeroPost
-          _id={heroPost._id}
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          excerpt={heroPost.excerpt}
-          date={heroPost.date}
-        />
+      <div className="flex my-6 justify-center">
+        <h1 className="text-4xl font-bold text-fedblue">Sub Par Engineering</h1>
       </div>
+      <HeroPost
+        _id={heroPost._id}
+        title={heroPost.title}
+        coverImage={heroPost.coverImage}
+        excerpt={heroPost.excerpt}
+        date={heroPost.date}
+      />
 
       {remainingPosts.length > 0 && (
         <>
