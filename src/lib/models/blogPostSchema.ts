@@ -6,7 +6,7 @@ export const PostSchema = z.object({
     .min(5, { message: "Title is Required" })
     .max(100, { message: "Title should be less than 100 characters" }),
   coverImage: z.string().url({ message: "Cover Image is Required" }),
-  viewCount: z.number(),
+  viewCount: z.number().default(0),
   excerpt: z
     .string()
     .min(15, { message: "Excerpt should be more than 15 characters" }),
