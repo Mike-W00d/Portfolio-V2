@@ -2,8 +2,8 @@ import { auth } from "@clerk/nextjs/server";
 import { Types } from "mongoose";
 import { Metadata } from "next";
 
-import HeroPost from "@/components/heroPost";
-import PostContainer from "@/components/postContainer";
+import HeroPost from "@/components/blog-components/heroPost";
+import PostContainer from "@/components/blog-components/postContainer";
 import connectToDB from "@/lib/dbConnect";
 import Post from "@/lib/models/posts";
 
@@ -32,9 +32,7 @@ interface PostDocument {
 async function getPosts(isLoggedIn: boolean): Promise<postProps[]> {
   await connectToDB();
   try {
-    const filter = isLoggedIn
-      ? { status: { $in: [1, 2] } }
-      : { status: 1 };
+    const filter = isLoggedIn ? { status: { $in: [1, 2] } } : { status: 1 };
     const posts = (await Post.find(filter)
       .sort({ date: -1 })
       .select("title coverImage excerpt date content status")

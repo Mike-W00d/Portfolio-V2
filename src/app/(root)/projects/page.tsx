@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import React from "react";
 
-import { ProjectsCarousel } from "@/components/projectsCarousel";
+import { ProjectsCarousel } from "@/components/projects/projectsCarousel";
 
 export const metadata: Metadata = {
   title: "Projects | Michael Wood | Full Stack Developer",
