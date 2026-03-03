@@ -39,6 +39,7 @@ function renderNextImage(
         position: "relative",
         aspectRatio: `${width} / ${height}`,
       }}
+      title={photo.description}
     >
       <Image
         src={photo.src}
