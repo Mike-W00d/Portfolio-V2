@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { Hero, About, Contact, Footer } from "@/app/(sections)";
+import { Hero, About, Contact, Footer } from "@/components/home";
 
 export const metadata: Metadata = {
   title: "Homepage | Michael Wood | Full Stack Developer",

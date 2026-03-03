@@ -1,7 +1,7 @@
-import AcebookCarosel from "@/app/(sections)/acebookCarosel";
-import BaldBibleCarosel from "@/app/(sections)/baldCarosel";
-import NikeCarosel from "@/app/(sections)/nikeCarosel";
-import PortfolioCarosel from "@/app/(sections)/portfolioCarosel";
+import AcebookCarosel from "@/components/projects/acebookCarosel";
+import BaldBibleCarosel from "@/components/projects/baldCarosel";
+import NikeCarosel from "@/components/projects/nikeCarosel";
+import PortfolioCarosel from "@/components/projects/portfolioCarosel";
 import {
   Carousel,
   CarouselContent,

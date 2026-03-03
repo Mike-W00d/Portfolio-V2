@@ -7,11 +7,11 @@ import Image from "next/image";
 import React from "react";
 
 import "./globals.css";
-import Header from "@/app/(sections)/header";
+import Header from "@/components/home/header";
 import SideNav from "@/components/nav/side-nav";
 import { cn } from "@/lib/utils";
 
-import WelcomeMessage from "./(sections)/welcomeMessage";
+import WelcomeMessage from "../components/home/welcomeMessage";
 import GoogleCaptchaWrapper from "./providers/GoogleCaptchaWrapper";
 import Providers from "./providers/Toast";
 
