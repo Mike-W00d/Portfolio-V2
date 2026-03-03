@@ -42,7 +42,7 @@ const HeroPost = ({ _id, title, coverImage, excerpt, date }: HeroPostProps) => {
         <h2 className="mb-2 text-2xl font-bold text-white drop-shadow-lg md:text-4xl">
           {title}
         </h2>
-        <p className="mb-3 line-clamp-2 max-w-2xl text-sm text-cyan/90 drop-shadow md:text-base">
+        <p className="mb-3 max-w-2xl text-sm text-cyan/90 drop-shadow md:text-base">
           {excerpt}
         </p>
         <div className="flex items-center justify-between">

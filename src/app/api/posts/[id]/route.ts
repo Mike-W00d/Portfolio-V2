@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -46,13 +47,25 @@ export async function PATCH(
     const body = await request.json();
     const validatedData = PostSchema.partial().parse(body);
 
+    const updateData: Record<string, unknown> = { ...validatedData };
+    if (validatedData.content) {
+      const wordCount = validatedData.content
+        .replace(/[#*_~`>\[\]()!|\\-]/g, "")
+        .split(/\s+/)
+        .filter(Boolean).length;
+      updateData.readTime = Math.max(1, Math.ceil(wordCount / 200));
+    }
+
     await connectToDB();
 
-    const post = await Post.findByIdAndUpdate(id, validatedData, { new: true });
+    const post = await Post.findByIdAndUpdate(id, updateData, { new: true });
 
     if (!post) {
       return new NextResponse("Post Not Found", { status: 404 });
     }
+
+    revalidatePath('/blog');
+    revalidatePath(`/blog/post/${id}`);
 
     return NextResponse.json({ success: true, data: post }, { status: 200 });
   } catch (error) {
@@ -81,11 +94,14 @@ export async function DELETE(
 
     await connectToDB();
 
-    const post = await Post.findByIdAndDelete(id);
+    const post = await Post.findByIdAndUpdate(id, { status: 0 }, { new: true });
 
     if (!post) {
       return new NextResponse("Post Not Found", { status: 404 });
     }
+
+    revalidatePath('/blog');
+    revalidatePath(`/blog/post/${id}`);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

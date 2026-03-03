@@ -29,7 +29,7 @@ const CldUploadWidget = dynamic(
 type PostFormValues = z.infer<typeof PostSchema>;
 
 interface BlogFormProps {
-  initialValues?: PostFormValues & { _id: string };
+  initialValues?: PostFormValues & { _id: string; status?: number };
 }
 
 export function BlogForm({ initialValues }: BlogFormProps) {
@@ -53,6 +53,7 @@ export function BlogForm({ initialValues }: BlogFormProps) {
       coverImage: initialValues?.coverImage || "",
       excerpt: initialValues?.excerpt || "",
       content: initialValues?.content || "",
+      status: initialValues?.status ?? 1,
     },
   });
   const router = useRouter();
@@ -61,7 +62,13 @@ export function BlogForm({ initialValues }: BlogFormProps) {
   async function onSubmit(values: PostFormValues) {
     try {
       if (isEditing) {
-        await axios.patch(`/api/posts/${initialValues._id}`, values);
+        const changedFields: Partial<PostFormValues> = {};
+        for (const key of Object.keys(values) as (keyof PostFormValues)[]) {
+          if (values[key] !== initialValues[key as keyof typeof initialValues]) {
+            (changedFields as Record<string, unknown>)[key] = values[key];
+          }
+        }
+        await axios.patch(`/api/posts/${initialValues._id}`, changedFields);
         toast.success("Post updated successfully");
         router.push(`/blog/post/${initialValues._id}`);
       } else {
@@ -97,7 +104,7 @@ export function BlogForm({ initialValues }: BlogFormProps) {
       onSubmit={handleSubmit(onSubmit)}
       className="mx-auto flex h-full w-full max-w-6xl flex-col gap-3 px-4 pb-4"
     >
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
         <div>
           <label className="mb-1 block text-sm font-medium text-fedblue">
             Title
@@ -112,6 +119,19 @@ export function BlogForm({ initialValues }: BlogFormProps) {
               {errors.title.message}
             </p>
           )}
+        </div>
+
+        <div>
+          <label className="mb-1 block text-sm font-medium text-fedblue">
+            Status
+          </label>
+          <select
+            className="w-full rounded-lg border p-2.5"
+            {...register("status", { valueAsNumber: true })}
+          >
+            <option value={1}>Active</option>
+            <option value={2}>Draft</option>
+          </select>
         </div>
 
         <div>
