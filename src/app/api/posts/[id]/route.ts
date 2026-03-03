@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -63,6 +64,9 @@ export async function PATCH(
       return new NextResponse("Post Not Found", { status: 404 });
     }
 
+    revalidatePath('/blog');
+    revalidatePath(`/blog/post/${id}`);
+
     return NextResponse.json({ success: true, data: post }, { status: 200 });
   } catch (error) {
     if (error instanceof ZodError) {
@@ -95,6 +99,9 @@ export async function DELETE(
     if (!post) {
       return new NextResponse("Post Not Found", { status: 404 });
     }
+
+    revalidatePath('/blog');
+    revalidatePath(`/blog/post/${id}`);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {

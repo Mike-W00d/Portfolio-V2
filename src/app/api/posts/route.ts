@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
@@ -26,6 +27,8 @@ export async function POST(request: Request) {
     await connectToDB();
 
     const newPost = await Post.create({ ...validatedData, readTime });
+
+    revalidatePath('/blog');
 
     return NextResponse.json({ success: true, data: newPost }, { status: 201 });
   } catch (error) {
