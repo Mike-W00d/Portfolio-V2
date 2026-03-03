@@ -1,3 +1,5 @@
+export const revalidate = 3600;
+
 import { Types } from "mongoose";
 
 import connectToDB from "@/lib/dbConnect";
@@ -29,6 +31,11 @@ async function getPhotos(): Promise<PhotoType[]> {
       .select("src description height width")
       .lean()
       .exec()) as unknown as PhotoDocument[];
+
+    for (let i = photos.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [photos[i], photos[j]] = [photos[j], photos[i]];
+    }
 
     return photos.map((photo) => ({
       src: photo.src,
