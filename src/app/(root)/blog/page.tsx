@@ -1,3 +1,4 @@
+import { auth } from "@clerk/nextjs/server";
 import { Types } from "mongoose";
 import { Metadata } from "next";
 
@@ -28,12 +29,15 @@ interface PostDocument {
   content: string;
 }
 
-async function getPosts(): Promise<postProps[]> {
+async function getPosts(isLoggedIn: boolean): Promise<postProps[]> {
   await connectToDB();
   try {
-    const posts = (await Post.find({})
+    const filter = isLoggedIn
+      ? { status: { $in: [1, 2] } }
+      : { status: 1 };
+    const posts = (await Post.find(filter)
       .sort({ date: -1 })
-      .select("title coverImage excerpt date content")
+      .select("title coverImage excerpt date content status")
       .lean()
       .exec()) as unknown as PostDocument[];
 
@@ -52,7 +56,8 @@ async function getPosts(): Promise<postProps[]> {
 }
 
 export default async function Index() {
-  const posts = await getPosts();
+  const { userId } = await auth();
+  const posts = await getPosts(!!userId);
 
   if (!posts || posts.length === 0) {
     return (

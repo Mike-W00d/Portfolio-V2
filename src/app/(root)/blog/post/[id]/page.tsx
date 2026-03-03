@@ -3,12 +3,13 @@ import { ArrowLeft } from "lucide-react";
 import { Types } from "mongoose";
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import Avatar from "@/components/blog-components/avatar";
 import { PostActions } from "@/components/blog-components/postActions";
 import { PostContent, PostHero } from "@/components/blog-components/postDetail";
 import PostShare from "@/components/blog-components/postShare";
-import ViewCounter from "@/components/blog-components/viewCounter";
+import TrackView from "@/components/blog-components/viewCounter";
 import connectToDB from "@/lib/dbConnect";
 import Post from "@/lib/models/posts";
 
@@ -24,6 +25,8 @@ interface PostDocument {
   excerpt: string;
   date: string;
   content: string;
+  readTime: number;
+  status: number;
 }
 
 async function getPost(id: string) {
@@ -39,6 +42,8 @@ async function getPost(id: string) {
     excerpt: post.excerpt,
     date: post.date,
     content: post.content,
+    readTime: post.readTime,
+    status: post.status ?? 1,
   };
 }
 
@@ -71,7 +76,12 @@ export default async function Page({
   const { id } = await params;
   const user = await currentUser();
 
-  const { title, content, coverImage, date } = await getPost(id);
+  const post = await getPost(id);
+
+  if (post.status === 0) notFound();
+  if (post.status === 2 && !user) notFound();
+
+  const { title, content, coverImage, date, readTime } = post;
 
   return (
     <main className="px-4 py-8 md:px-8">
@@ -96,7 +106,8 @@ export default async function Page({
                 year: "numeric",
               })}
             </time>
-            <ViewCounter postId={id} isLoggedIn={!!user} />
+            <span className="text-sm text-honblue">{readTime} minute read</span>
+            <TrackView postId={id} isLoggedIn={!!user} />
           </div>
           <div className="flex items-center gap-3">
             <PostShare postId={id} title={title} />

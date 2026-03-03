@@ -17,9 +17,15 @@ export async function POST(request: Request) {
 
     const validatedData = PostSchema.parse(body);
 
+    const wordCount = validatedData.content
+      .replace(/[#*_~`>\[\]()!|\\-]/g, "")
+      .split(/\s+/)
+      .filter(Boolean).length;
+    const readTime = Math.max(1, Math.ceil(wordCount / 200));
+
     await connectToDB();
 
-    const newPost = await Post.create(validatedData);
+    const newPost = await Post.create({ ...validatedData, readTime });
 
     return NextResponse.json({ success: true, data: newPost }, { status: 201 });
   } catch (error) {
