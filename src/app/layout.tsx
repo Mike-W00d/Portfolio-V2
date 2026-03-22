@@ -50,7 +50,7 @@ export default async function RootLayout({
         />
         <meta name="apple-mobile-web-app-title" content="mgmwood.com" />
         <link rel="manifest" href="/site.webmanifest" />
-        <body className={cn(inter.className)}>
+        <body className={cn(inter.className, "h-screen overflow-hidden")}>
           <GoogleCaptchaWrapper>
             <Header />
             <div className="flex">
@@ -63,17 +63,15 @@ export default async function RootLayout({
                 />
               </div>
               <SideNav />
-              <div className="w-full overflow-x-hidden">
-                <div className="h-[calc(100vh-64px)] overflow-auto">
-                  <div className="relative mx-auto flex h-[calc(100vh-64px)] w-full justify-center overflow-y-auto">
-                    <div className="w-full md:max-w-6xl">
-                      <Providers>
-                        {children}
-                        <Analytics />
-                        <SpeedInsights />
-                        <WelcomeMessage />
-                      </Providers>
-                    </div>
+              <div className="h-[calc(100vh-64px)] w-full overflow-y-auto overflow-x-hidden">
+                <div className="relative mx-auto flex w-full justify-center">
+                  <div className="w-full md:max-w-6xl">
+                    <Providers>
+                      {children}
+                      <Analytics />
+                      <SpeedInsights />
+                      <WelcomeMessage />
+                    </Providers>
                   </div>
                 </div>
               </div>
