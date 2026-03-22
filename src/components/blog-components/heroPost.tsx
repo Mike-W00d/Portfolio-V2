@@ -39,10 +39,10 @@ const HeroPost = ({ _id, title, coverImage, excerpt, date }: HeroPostProps) => {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-        <h2 className="mb-2 text-2xl font-bold text-white drop-shadow-lg md:text-4xl">
+        <h2 className="mb-2 text-2xl font-bold text-white md:text-4xl" style={{ textShadow: "0 4px 8px rgba(0, 0, 0, 0.45)" }}>
           {title}
         </h2>
-        <p className="mb-3 max-w-2xl text-sm text-cyan/90 drop-shadow md:text-base">
+        <p className="mb-3 line-clamp-2 max-w-2xl text-sm text-cyan/90 md:line-clamp-none md:text-base" style={{ textShadow: "0 2px 4px rgba(0, 0, 0, 0.35)" }}>
           {excerpt}
         </p>
         <div className="flex items-center justify-between">
