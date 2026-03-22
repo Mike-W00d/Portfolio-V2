@@ -32,10 +32,10 @@ const Hero = () => {
             />
 
             <h3 className="px-3 text-xl text-honblue">
-              I am a Full Stack Software Engineer at StuRents where I build Rest
-              APIs, user interfaces and solve problems using tech such as
-              Node.js, React.js, Next.js, AWS Lambda, MySQL and PHP amongst
-              others.
+              A Full Stack Software Engineer at StuRents. I build scalable,
+              data-driven systems, craft user interfaces, and connect everything
+              through APIs. I enjoy solving real-world problems using Node.js,
+              Next.js, AWS Lambda, MySQL, PHP, and more.
             </h3>
           </span>
         </div>
@@ -73,13 +73,14 @@ const Hero = () => {
 
       {/* Right Section */}
       <div className="relative flex w-full items-center justify-center text-center lg:w-1/2">
-        <Image
-          src="/HERO2.png"
-          alt="Hero"
-          width={550}
-          height={550}
-          className="rounded-full"
-        />
+        <div className="relative h-[550px] w-[550px] max-sm:mb-3">
+          <Image
+            src="/Hero3.png"
+            alt="Hero"
+            fill
+            className="rounded-full object-cover"
+          />
+        </div>
       </div>
     </div>
   );
