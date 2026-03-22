@@ -1,5 +1,6 @@
 import AcebookCarosel from "@/components/projects/acebookCarosel";
 import BaldBibleCarosel from "@/components/projects/baldCarosel";
+import FplCarosel from "@/components/projects/fplCarosel";
 import NikeCarosel from "@/components/projects/nikeCarosel";
 import PortfolioCarosel from "@/components/projects/portfolioCarosel";
 import {
@@ -16,19 +17,22 @@ export function ProjectsCarousel() {
       opts={{
         align: "start",
       }}
-      className="h-max w-full max-w-4xl"
+      className="h-full w-full max-w-4xl"
     >
-      <CarouselContent>
-        <CarouselItem className="size-[80vh]">
+      <CarouselContent className="h-full">
+        <CarouselItem className="h-full">
+          <FplCarosel />
+        </CarouselItem>
+        <CarouselItem className="h-full">
           <BaldBibleCarosel />
         </CarouselItem>
-        <CarouselItem>
+        <CarouselItem className="h-full">
           <PortfolioCarosel />
         </CarouselItem>
-        <CarouselItem>
+        <CarouselItem className="h-full">
           <NikeCarosel />
         </CarouselItem>
-        <CarouselItem>
+        <CarouselItem className="h-full">
           <AcebookCarosel />
         </CarouselItem>
       </CarouselContent>

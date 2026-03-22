@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const SpareCarousel = () => {
   return (
-    <div className="flex justify-center py-10">
+    <div className="flex h-full items-center justify-center">
       <div className="w-full max-w-lg space-y-6 rounded-lg bg-white p-8 shadow-2xl transition duration-300 hover:scale-105">
         <h1 className="text-center text-3xl font-bold tracking-tight text-honblue">
           More to Come Soon
